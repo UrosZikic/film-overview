@@ -3,10 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Questrial&family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
+    <!-- primary container -->
+    <div class="movie-container"></div>
+    <!-- movie info modal -->
+    <div class="info-modal invisible">
+      <div class="modal-image--container">
+        <img src="" alt="" class="modal-image" />
+      </div>
+      <div class="info-inner">
+        <p class="modal-name"></p>
+        <p class="modal-release"></p>
+        <p class="modal-pg"></p>
+        <p class="modal-vote"></p>
+        <p class="modal-genre"></p>
+        <p class="modal-overview"></p>
+      </div>
+    </div>
     <script src="script.js"></script>
+    <script src="genre.js"></script>
   </body>
 </html>
