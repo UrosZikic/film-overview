@@ -5,6 +5,14 @@
   margin: 0;
 }
 
+body {
+  background: linear-gradient(to bottom right, #1864ab, #5f3dc4);
+}
+
+main {
+  padding-top: 150px;
+}
+
 .movie-container {
   width: 100%;
   max-width: 110rem;
@@ -85,4 +93,13 @@ img {
 
 .invisible {
   display: none;
+}
+
+.poster-path {
+  height: 234px !important;
+  object-fit: cover !important;
+}
+.backdrop-path {
+  height: 234px;
+  object-fit: contain;
 }

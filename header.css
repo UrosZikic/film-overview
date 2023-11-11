@@ -1,0 +1,111 @@
+/* 
+
+
+
+
+
+header div {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+header div input {
+  padding: 10px 20px 10px 10px;
+  width: 100%;
+  max-width: 320px;
+}
+
+
+*/
+
+header nav {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  position: fixed !important;
+  z-index: 100;
+  width: 100%;
+}
+.navbar-expand-lg {
+  justify-content: initial;
+}
+.navbar-nav-additional {
+  background: linear-gradient(to bottom right, #1864ab, #5f3dc4);
+}
+
+.navScroll {
+  background: linear-gradient(to bottom right, #1864ab, #5f3dc4);
+  z-index: 100;
+}
+
+header img {
+  width: 100%;
+  height: 100%;
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+header nav ul li button {
+  padding: 10px;
+  font-size: 18px;
+  background-color: inherit;
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+
+.form-pretender {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+header form input[type="text"] {
+  background-color: inherit;
+  border: none;
+
+  border: 1px solid blue;
+  vertical-align: middle;
+}
+header form input[type="text"]::placeholder {
+  color: white;
+}
+
+.submit-button {
+  border: none !important;
+  position: absolute;
+  right: 5px;
+
+  vertical-align: middle;
+  font-size: 24px !important;
+
+  display: flex;
+  align-items: center;
+  outline: none;
+}
+
+header form button ion-icon {
+  color: white;
+}
+
+.toggler-manipulate {
+  color: #fff;
+  font-size: 40px;
+}
+.navbar-toggler-icon {
+  display: flex;
+  align-items: center;
+  width: 1em;
+}
+
+.toggler-manipulate:hover {
+  color: #fff;
+}

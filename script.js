@@ -5,8 +5,34 @@ const discoverUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKe
 const TotalMoviePages = 40919;
 // const discoverCustomUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&page=${page}`;
 
-const movieName = "Spider-Man";
-const image = document.querySelector(".image");
+const navigation = document.querySelector(".navJsClass");
+
+window.addEventListener("scroll", function () {
+  // Get the number of pixels scrolled from the top
+  var pixelsFromTop = window.scrollY;
+  if (pixelsFromTop >= 25) {
+    navigation.classList.add("navScroll");
+  } else {
+    navigation.classList.remove("navScroll");
+  }
+});
+
+// start responsive fixes
+const navbarResponsive = document.querySelector(".navbar-nav-manipulate");
+
+function resizeNav() {
+  var windowWidth = window.innerWidth;
+
+  if (windowWidth <= 991) {
+    navbarResponsive.classList.add("navbar-nav-additional");
+  } else {
+    navbarResponsive.classList.remove("navbar-nav-additional");
+  }
+}
+window.addEventListener("load", resizeNav);
+window.addEventListener("resize", resizeNav);
+// end responsive fixes
+
 const movieContainer = document.querySelector(".movie-container");
 //
 (async function fetchRandom() {
@@ -122,34 +148,3 @@ const movieContainer = document.querySelector(".movie-container");
     console.error("error", error);
   }
 })();
-
-async function fetchMovie() {
-  try {
-    await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-        movieName
-      )}`
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("error 404");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        note.innerHTML = data.results[0].title;
-
-        const source = data.results[0].poster_path;
-        const baseUrl = "https://image.tmdb.org/t/p/";
-        const imageSize = "w500";
-        console.log(source);
-        image.src = baseUrl + imageSize + source;
-      })
-      .catch((error) => {
-        console.error("you have an error!", error);
-      });
-  } catch (error) {
-    console.error("error", error);
-  }
-}
