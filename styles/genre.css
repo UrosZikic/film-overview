@@ -1,0 +1,20 @@
+.list-genres {
+  position: relative;
+}
+.genre-container {
+  position: absolute;
+  display: none;
+  background-color: black;
+}
+.genre-container div {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+.genre-container div button {
+  font-size: 16px;
+}
+
+.list-genres:hover .genre-container {
+  display: flex;
+}

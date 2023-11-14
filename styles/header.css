@@ -1,24 +1,3 @@
-/* 
-
-
-
-
-
-header div {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-header div input {
-  padding: 10px 20px 10px 10px;
-  width: 100%;
-  max-width: 320px;
-}
-
-
-*/
-
 header nav {
   display: flex;
   align-items: center;

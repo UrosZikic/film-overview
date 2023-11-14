@@ -78,3 +78,21 @@ const genre = {
     },
   ],
 };
+
+// logic to retrieve the genre
+const elements = document.querySelectorAll(".genre");
+
+elements.forEach((element) => {
+  element.onclick = () => {
+    let genreId;
+    const name = element.textContent;
+    for (let i = 0; i < genre.genres.length; i++) {
+      if (name === genre.genres[i].name) {
+        genreId = genre.genres[i].id;
+        break;
+      }
+    }
+    const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreId}`;
+    fetchMovies(genreUrl);
+  };
+});

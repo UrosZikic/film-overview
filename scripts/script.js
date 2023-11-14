@@ -94,7 +94,13 @@ async function fetchMovies(url) {
 
           imageContainer.classList.add("image-container");
 
-          img.src = baseUrl + imageSize + data.results[i].backdrop_path;
+          if (data.results[i].backdrop_path) {
+            img.src = baseUrl + imageSize + data.results[i].backdrop_path;
+          } else {
+            img.src = baseUrl + imageSize + data.results[i].poster_path;
+            img.style.height = "227.61px";
+            img.style.objectFit = "cover";
+          }
           img.alt = "movie poster";
           img.classList.add("poster");
 
@@ -187,9 +193,3 @@ async function fetchMovies(url) {
     console.error("error", error);
   }
 }
-
-fetch(
-  `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=27`
-)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
