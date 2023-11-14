@@ -125,6 +125,17 @@ img {
   display: inline-block;
 }
 
+footer {
+  padding: 10px;
+}
+footer p {
+  color: #fff;
+}
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 900px) {
   .youtube-container {
     grid-template-columns: 1fr;

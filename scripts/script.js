@@ -1,14 +1,75 @@
-const topRatedApiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
+const apiKey = "245d71936de55c199391618d2d244f64";
+// random list of popular movies for landing page
+const discoverUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`;
+// call specific page
+const TotalMoviePages = 40919;
 
-const topBtn = document.querySelector(".top");
+const navigation = document.querySelector(".navJsClass");
 
-topBtn.onclick = () => {
-  fetchTop();
+window.addEventListener("scroll", function () {
+  // Get the number of pixels scrolled from the top
+  var pixelsFromTop = window.scrollY;
+  if (pixelsFromTop >= 25) {
+    navigation.classList.add("navScroll");
+  } else {
+    navigation.classList.remove("navScroll");
+  }
+});
+
+// start responsive fixes
+const navbarResponsive = document.querySelector(".navbar-nav-manipulate");
+
+function resizeNav() {
+  var windowWidth = window.innerWidth;
+
+  if (windowWidth <= 991) {
+    navbarResponsive.classList.add("navbar-nav-additional");
+  } else {
+    navbarResponsive.classList.remove("navbar-nav-additional");
+  }
+}
+window.addEventListener("load", resizeNav);
+window.addEventListener("resize", resizeNav);
+// end responsive fixes
+
+// categories
+
+// 0. Initial random call
+fetchMovies(discoverUrl);
+
+// 1. Now playing
+const NPapiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
+const nowPlayingBtn = document.querySelector(".now-playing");
+nowPlayingBtn.onclick = () => {
+  fetchMovies(NPapiUrl);
 };
 
-async function fetchTop() {
+// 2. Popular
+const popularApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=2`;
+const popularBtn = document.querySelector(".popular");
+popularBtn.onclick = () => {
+  fetchMovies(popularApiUrl);
+};
+
+// 3.top rated
+const topRatedApiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
+const topBtn = document.querySelector(".top");
+topBtn.onclick = () => {
+  fetchMovies(topRatedApiUrl);
+};
+
+// 4. upcoming
+const upcomingApiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=2`;
+const upcomingBtn = document.querySelector(".upcoming");
+upcomingBtn.onclick = () => {
+  fetchMovies(upcomingApiUrl);
+};
+
+const movieContainer = document.querySelector(".movie-container");
+//
+async function fetchMovies(url) {
   try {
-    await fetch(topRatedApiUrl)
+    await fetch(url)
       .then((response) => {
         if (!response.ok) {
           throw new Error("error 404");
@@ -25,29 +86,15 @@ async function fetchTop() {
         const imageSize = "w500";
 
         for (let i = 0; i < data.results.length; i++) {
+          const movieValue = i;
+
           const imageContainer = document.createElement("div");
           const img = document.createElement("img");
           const movieName = document.createElement("p");
 
           imageContainer.classList.add("image-container");
 
-          if (data.results[i].backdrop_path) {
-            img.src = baseUrl + imageSize + data.results[i].backdrop_path;
-            img.classList.add("backdrop-path");
-          } else if (
-            data.results[i].poster_path &&
-            !data.results[i].backdrop_path
-          ) {
-            img.src = baseUrl + imageSize + data.results[i].poster_path;
-            img.classList.add("poster-path");
-          } else if (
-            !data.results[i].poster_path &&
-            !data.results[i].backdrop_path
-          ) {
-            img.src =
-              "https://t3.ftcdn.net/jpg/05/09/38/44/360_F_509384487_IA21H3HyRO4whYBRcLG3BvClrRvXLvmw.jpg";
-            img.classList.add("poster-path");
-          }
+          img.src = baseUrl + imageSize + data.results[i].backdrop_path;
           img.alt = "movie poster";
           img.classList.add("poster");
 
@@ -140,3 +187,9 @@ async function fetchTop() {
     console.error("error", error);
   }
 }
+
+fetch(
+  `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=27`
+)
+  .then((response) => response.json())
+  .then((data) => console.log(data));
