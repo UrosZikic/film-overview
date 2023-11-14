@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
+    <style>
+      .slide-slide {
+        transform: scale(0.8);
+        transition: all 0.4s ease-in-out;
+        padding: 40px 0;
+      }
+
+      .slick-slide img {
+        max-width: 100%;
+        /* width: 50%; */
+        transition: all 0.4s ease-in-out;
+      }
+
+      .slick-center {
+        transform: scale(1.1);
+      }
+
+      .slick-arrow:before {
+        color: black;
+        background-color: red;
+        /* transform: translate(50px, -100px);
+        height: 100%;
+        width: 30px;
+        font-size: 20px; */
+        z-index: 999;
+      }
+      .slick-arrow:hover {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .slick-arrow::after {
+        color: black;
+        background-color: red;
+        z-index: 999;
+      }
+      .slick-next {
+        content: "\f3d3"; /* Ionicon code for the desired icon */
+        font-family: "Ionicons";
+        transform: translate(-50px, -20px);
+        z-index: 999;
+      }
+      .slick-prev {
+        content: "\f3d2"; /* Ionicon code for the desired icon */
+        font-family: "Ionicons";
+        transform: translate(20px, -20px);
+        z-index: 999;
+      }
+      .slick-prev::before {
+        content: "\f3d2"; /* Ionicon code for the desired icon */
+        font-family: "Ionicons";
+        font-size: 3rem;
+      }
+      .slick-next::before {
+        content: "\f3d3"; /* Ionicon code for the desired icon */
+        font-family: "Ionicons";
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider">
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+      <div class="item"><img src="icons/web-logo.png" alt="" /></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        $(".slider").slick({
+          centerMode: true,
+          centerPadding: "60px",
+          slidesToShow: 7,
+          arrows: true,
+          swipe: false,
+          responsive: [
+            {
+              settings: {
+                arrows: true,
+                centerMode: true,
+                centerPadding: "0px",
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+            {
+              settings: {
+                arrows: true,
+                centerMode: true,
+                centerPadding: "0px",
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                infinite: true,
+              },
+            },
+          ],
+        });
+      });
+    </script>
+    <script>
+      const apiKey = "245d71936de55c199391618d2d244f64";
+      const movieName = "Spider-Man";
+      const videosApiUrl = `https://api.themoviedb.org/3/movie/12345/videos?api_key=${apiKey}&language=en-US`;
+
+      fetch(videosApiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("error 404");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    </script>
+  </body>
+</html>

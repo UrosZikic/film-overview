@@ -32,6 +32,7 @@ async function fetchMovie(movieName) {
       })
       .then((data) => {
         console.log(data);
+        iFrameSet();
         while (movieContainer.firstChild) {
           movieContainer.removeChild(movieContainer.firstChild);
         }

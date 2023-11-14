@@ -55,16 +55,19 @@
               <button class="upcoming">Upcoming</button>
             </li>
           </ul>
-          <div class="form-pretender">
-            <input
-              class="form-control movie-browser"
-              type="text"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn my-2 my-sm-0 submit-button">
-              <ion-icon name="search"></ion-icon>
-            </button>
+          <div class="form-preview--container">
+            <div class="form-pretender">
+              <input
+                class="form-control movie-browser"
+                type="text"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn my-2 my-sm-0 submit-button">
+                <ion-icon name="search"></ion-icon>
+              </button>
+            </div>
+            <div class="preview-movie--container"></div>
           </div>
         </div>
       </nav>
@@ -72,6 +75,21 @@
     </header>
 
     <main>
+      <div class="youtube-container">
+        <div class="trailer-info">
+          <h2>You're watching:</h2>
+          <p class="trailer-name"></p>
+        </div>
+        <iframe
+          width="100%"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          class="youtube-frame"
+        ></iframe>
+      </div>
+
       <!-- primary container -->
       <div class="movie-container"></div>
       <!-- movie info modal -->
@@ -89,6 +107,7 @@
         </div>
       </div>
     </main>
+    <script src="iframe.js"></script>
     <script src="script.js"></script>
     <script src="genre.js"></script>
     <script src="movieSearch.js"></script>
@@ -96,6 +115,7 @@
     <script src="popular.js"></script>
     <script src="topRated.js"></script>
     <script src="upcoming.js"></script>
+
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

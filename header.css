@@ -61,6 +61,10 @@ header nav ul li button {
   border: none;
   color: #fff;
 }
+.form-preview--container {
+  display: flex;
+  flex-direction: column;
+}
 
 .form-pretender {
   display: flex;

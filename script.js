@@ -45,7 +45,7 @@ const movieContainer = document.querySelector(".movie-container");
         return response.json();
       })
       .then((data) => {
-        console.log(data.results[0]);
+        console.log(data);
 
         const baseUrl = "https://image.tmdb.org/t/p/";
         const imageSize = "w500";

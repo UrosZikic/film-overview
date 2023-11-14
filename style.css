@@ -7,6 +7,7 @@
 
 body {
   background: linear-gradient(to bottom right, #1864ab, #5f3dc4);
+  height: 100%;
 }
 
 main {
@@ -27,6 +28,7 @@ main {
 
 .image-container {
   position: relative;
+  display: grid;
 }
 .image-container:hover img {
   filter: blur(4px) brightness(50%);
@@ -38,11 +40,12 @@ main {
 .movie-name {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
+  /* left: 0; */
+  justify-self: center;
+  /* transform: translate(50%, -50%); */
+  /* width: 100%; */
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 18px;
   font-weight: 700;
   color: white;
   opacity: 0;
@@ -102,4 +105,40 @@ img {
 .backdrop-path {
   height: 234px;
   object-fit: contain;
+}
+/* iframe styles */
+.youtube-container {
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 1rem;
+}
+
+.trailer-info {
+  padding: 1rem;
+}
+
+.trailer-info h2,
+.trailer-info p {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 900px) {
+  .youtube-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .info-inner p {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .info-inner p {
+    font-size: 12px;
+  }
 }
