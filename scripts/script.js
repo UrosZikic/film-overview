@@ -121,13 +121,16 @@ async function fetchMovies(url) {
         const modalPg = document.querySelector(".modal-pg");
         const infoInner = document.querySelector(".info-inner");
 
-        document.body.onclick = () => {
-          if (!infoModal.classList.contains("invisible")) {
+        document.addEventListener("click", function (event) {
+          const infoModal = document.querySelector(".info-modal");
+
+          // Check if the clicked element is not a descendant of infoModal2
+          if (!infoModal.contains(event.target)) {
+            // Add the "invisible-two" class to infoModal2
             infoModal.classList.add("invisible");
             movieContainer.style.filter = "blur(0px)";
-            console.log("success");
           }
-        };
+        });
 
         // MOVIE DETAILS MODAL
         infoModal.onclick = (event) => {

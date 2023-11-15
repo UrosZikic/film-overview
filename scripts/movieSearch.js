@@ -44,7 +44,7 @@ async function fetchMovie(movieName) {
           const img = document.createElement("img");
           const movieName = document.createElement("p");
 
-          imageContainer.classList.add("image-container-three");
+          imageContainer.classList.add("image-container");
 
           if (data.results[i].backdrop_path) {
             img.src = baseUrl + imageSize + data.results[i].backdrop_path;
@@ -74,67 +74,64 @@ async function fetchMovie(movieName) {
 
           movieContainer.appendChild(imageContainer);
         }
-        const imgContainer3 = document.querySelectorAll(
-          ".image-container-three"
-        );
-        const infoModal3 = document.querySelector(".info-modal-three");
-        const modalImage3 = document.querySelector(".modal-image-three");
-        const modalName3 = document.querySelector(".modal-name-three");
-        const modalRelease3 = document.querySelector(".modal-release-three");
-        const modalVote3 = document.querySelector(".modal-vote-three");
-        const modalOverview3 = document.querySelector(".modal-overview-three");
-        const modalGenre3 = document.querySelector(".modal-genre-three");
-        const modalPg3 = document.querySelector(".modal-pg-three");
-        const infoInner3 = document.querySelector(".info-inner-three");
+        const imgContainer = document.querySelectorAll(".image-container");
+        const infoModal = document.querySelector(".info-modal");
+        const modalImage = document.querySelector(".modal-image");
+        const modalName = document.querySelector(".modal-name");
+        const modalRelease = document.querySelector(".modal-release");
+        const modalVote = document.querySelector(".modal-vote");
+        const modalOverview = document.querySelector(".modal-overview");
+        const modalGenre = document.querySelector(".modal-genre");
+        const modalPg = document.querySelector(".modal-pg");
+        const infoInner = document.querySelector(".info-inner");
 
         document.body.onclick = (event) => {
-          const isInsideModal = event.target.closest(".info-modal-three");
+          const isInsideModal = event.target.closest(".info-modal");
           if (!isInsideModal) {
-            if (!infoModal3.classList.contains("invisible-three")) {
-              infoModal3.classList.add("invisible-three");
+            if (!infoModal.classList.contains("invisible")) {
+              infoModal.classList.add("invisible");
               movieContainer.style.filter = "blur(0px)";
             }
           }
         };
-        infoModal3.onclick = (event) => {
+        infoModal.onclick = (event) => {
           // Prevent the click event from propagating to the body
           event.stopPropagation();
         };
 
-        imgContainer3.forEach((movie, index) => {
+        imgContainer.forEach((movie, index) => {
           if (data.results[index]) {
             let totalVotes = data.results[index].vote_count || 0;
             let averageGrade = data.results[index].vote_average || 0;
 
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
-              console.log("SUCCESS");
+              console.log("SUS");
 
               let genreContainer = [];
               let genreNames = "";
 
               movieContainer.style.filter = "blur(4px)";
 
-              if (infoModal3.classList.contains("invisible-three")) {
-                infoModal3.classList.remove("invisible-three");
+              if (infoModal.classList.contains("invisible")) {
+                infoModal.classList.remove("invisible");
               }
 
-              infoInner3.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${
+              infoInner.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${
                 baseUrl + imageSize + data.results[index].poster_path
               })`;
-              infoInner3.style.backgroundSize = "cover";
+              infoInner.style.backgroundSize = "cover";
 
-              modalImage3.src =
+              modalImage.src =
                 baseUrl + imageSize + data.results[index].poster_path;
-              modalName3.textContent =
-                "Show name: " + data.results[index].title;
-              modalRelease3.textContent =
+              modalName.textContent = "Show name: " + data.results[index].title;
+              modalRelease.textContent =
                 "Release date: " + data.results[index].release_date;
-              modalPg3.textContent = data.results[index].adult
+              modalPg.textContent = data.results[index].adult
                 ? "Adult rating: R-rated"
                 : "Adult rating: PG-13";
               if (averageGrade && totalVotes) {
-                modalVote3.innerHTML = `Average score: ${averageGrade} - total votes: ${totalVotes}`;
+                modalVote.innerHTML = `Average score: ${averageGrade} - total votes: ${totalVotes}`;
               } //  genre id extraction
               for (let i = 0; i < data.results[index].genre_ids.length; i++) {
                 genreContainer.push(data.results[index].genre_ids[i]);
@@ -146,9 +143,9 @@ async function fetchMovie(movieName) {
                 }
               }
               //display genres
-              modalGenre3.innerHTML = "Genre: " + genreNames.slice(0, -2);
+              modalGenre.innerHTML = "Genre: " + genreNames.slice(0, -2);
               // end genre ex and con
-              modalOverview3.innerHTML =
+              modalOverview.innerHTML =
                 "Overview: " + data.results[index].overview;
             });
           }
