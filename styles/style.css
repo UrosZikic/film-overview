@@ -140,6 +140,9 @@ footer a {
   .youtube-container {
     grid-template-columns: 1fr;
   }
+  .trailer-info {
+    padding: 0;
+  }
 }
 
 @media only screen and (max-width: 600px) {

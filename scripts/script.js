@@ -86,8 +86,6 @@ async function fetchMovies(url) {
         const imageSize = "w500";
 
         for (let i = 0; i < data.results.length; i++) {
-          const movieValue = i;
-
           const imageContainer = document.createElement("div");
           const img = document.createElement("img");
           const movieName = document.createElement("p");
@@ -130,6 +128,7 @@ async function fetchMovies(url) {
           }
         };
 
+        // MOVIE DETAILS MODAL
         infoModal.onclick = (event) => {
           // Prevent the click event from propagating to the body
           event.stopPropagation();

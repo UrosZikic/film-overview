@@ -17,4 +17,5 @@
 
 .list-genres:hover .genre-container {
   display: flex;
+  z-index: 1;
 }
