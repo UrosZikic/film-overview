@@ -14,17 +14,15 @@
 .slick-prev,
 .slick-next {
   z-index: 2;
+  content: "button";
 }
 
 .slick-prev {
   left: 20px;
-  content: none;
 }
 .slick-prev::before {
-  content: none;
 }
 .slick-prev::after {
-  content: none;
 }
 
 .slick-prev ion-icon {
@@ -35,14 +33,11 @@
 
 .slick-next {
   right: 20px;
-  content: none;
 }
 
 .slick-next::before {
-  content: none;
 }
 .slick-next::after {
-  content: none;
 }
 
 .slick-next ion-icon {

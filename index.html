@@ -2,7 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Movie Overview is an interactive movie based website. Search for any movie and inform yourself, browse through numerous categories and genres, or scroll through carousel movie showcase"
+    />
+    <meta name="keywords" content="movies, shows, entertainment, overview" />
+    <meta name="author" content="Uros Zikic" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1864ab" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,6 +38,8 @@
       href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
     />
     <link rel="stylesheet" href="styles/slick.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/x-icon" href="icons\web-logo.png" />
     <title>Movie Overview</title>
   </head>
   <body>
@@ -110,7 +119,10 @@
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn my-2 my-sm-0 submit-button">
+              <button
+                class="btn my-2 my-sm-0 submit-button"
+                name="search-button"
+              >
                 <ion-icon name="search"></ion-icon>
               </button>
             </div>
@@ -134,6 +146,7 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
           class="youtube-frame"
+          loading="lazy"
         ></iframe>
       </div>
 

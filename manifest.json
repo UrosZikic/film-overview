@@ -1,0 +1,22 @@
+{
+  "name": "Movie Overview",
+  "short_name": "MO",
+  "description": "movie Overview offers an interactive userinterface which provides information on thousands of movies",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1864ab",
+  "theme_color": "#fff",
+  "icons": [
+    {
+      "src": "icons/web-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/web-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
