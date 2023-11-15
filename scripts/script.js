@@ -1,6 +1,6 @@
 const apiKey = "245d71936de55c199391618d2d244f64";
 // random list of popular movies for landing page
-const discoverUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`;
+const discoverUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&page=5`;
 // call specific page
 const TotalMoviePages = 40919;
 
@@ -125,6 +125,7 @@ async function fetchMovies(url) {
           if (!infoModal.classList.contains("invisible")) {
             infoModal.classList.add("invisible");
             movieContainer.style.filter = "blur(0px)";
+            console.log("success");
           }
         };
 

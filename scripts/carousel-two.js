@@ -1,8 +1,9 @@
-const carouselContainer = document.querySelector(".carousel-container");
-const topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=28&page=2 `;
-featureCarousel(topRatedCarousel, carouselContainer);
+document.querySelector(".exit-modal-two").onclick = () => {
+  document.querySelector(".info-modal-two").classList.add("invisible-two");
+  movieContainer.style.filter = "blur(0px)";
+};
 
-async function featureCarousel(url, container) {
+async function featureCarouselTwo(url, container) {
   try {
     await fetch(url)
       .then((response) => {
@@ -15,6 +16,7 @@ async function featureCarousel(url, container) {
         console.log(data);
         const baseUrl = "https://image.tmdb.org/t/p/";
         const imageSize = "w500";
+        // create carousel items
         for (let i = 0; i < data.results.length; i++) {
           const item = document.createElement("div");
           item.classList.add("item");
@@ -28,69 +30,74 @@ async function featureCarousel(url, container) {
           image.alt = "movie poster - carousel";
           name.textContent = data.results[i].title;
           name.classList.add("carousel-item--name");
-          image.classList.add("image-container");
+          image.classList.add("image-container-two");
           item.appendChild(image);
           item.appendChild(name);
-          // carouselContainer.appendChild(item);
           container.appendChild(item);
         }
         // modal attempt
-        const imgContainer = document.querySelectorAll(".image-container");
-        const infoModal = document.querySelector(".info-modal");
-        const modalImage = document.querySelector(".modal-image");
-        const modalName = document.querySelector(".modal-name");
-        const modalRelease = document.querySelector(".modal-release");
-        const modalVote = document.querySelector(".modal-vote");
-        const modalOverview = document.querySelector(".modal-overview");
-        const modalGenre = document.querySelector(".modal-genre");
-        const modalPg = document.querySelector(".modal-pg");
-        const infoInner = document.querySelector(".info-inner");
+        const imgContainer2 = document.querySelectorAll(".image-container-two");
+        const infoModal2 = document.querySelector(".info-modal-two");
+        const modalImage2 = document.querySelector(".modal-image-two");
+        const modalName2 = document.querySelector(".modal-name-two");
+        const modalRelease2 = document.querySelector(".modal-release-two");
+        const modalVote2 = document.querySelector(".modal-vote-two");
+        const modalOverview2 = document.querySelector(".modal-overview-two");
+        const modalGenre2 = document.querySelector(".modal-genre-two");
+        const modalPg2 = document.querySelector(".modal-pg-two");
+        const infoInner2 = document.querySelector(".info-inner-two");
 
-        document.body.onclick = () => {
-          if (!infoModal.classList.contains("invisible")) {
-            infoModal.classList.add("invisible");
+        document.addEventListener("click", function (event) {
+          const infoModal2 = document.querySelector(".info-modal-two");
+
+          // Check if the clicked element is not a descendant of infoModal2
+          if (!infoModal2.contains(event.target)) {
+            // Add the "invisible-two" class to infoModal2
+            infoModal2.classList.add("invisible-two");
             movieContainer.style.filter = "blur(0px)";
           }
-        };
-
+        });
         // MOVIE DETAILS MODAL
-        infoModal.onclick = (event) => {
+        infoModal2.onclick = (event) => {
           // Prevent the click event from propagating to the body
           event.stopPropagation();
+          // infoModal2.classList.add("invisible-two");
         };
 
-        imgContainer.forEach((movie, index) => {
+        imgContainer2.forEach((movie, index) => {
           if (data.results[index]) {
             let totalVotes = data.results[index].vote_count || 0;
             let averageGrade = data.results[index].vote_average || 0;
 
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
+              console.log(data.results[index].title);
 
               let genreContainer = [];
               let genreNames = "";
 
               movieContainer.style.filter = "blur(4px)";
 
-              if (infoModal.classList.contains("invisible")) {
-                infoModal.classList.remove("invisible");
+              if (infoModal2.classList.contains("invisible-two")) {
+                infoModal2.classList.remove("invisible-two");
               }
 
-              infoInner.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${
+              infoInner2.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(${
                 baseUrl + imageSize + data.results[index].poster_path
               })`;
-              infoInner.style.backgroundSize = "cover";
+              infoInner2.style.backgroundSize = "cover";
 
-              modalImage.src =
+              modalImage2.src =
                 baseUrl + imageSize + data.results[index].poster_path;
-              modalName.textContent = "Show name: " + data.results[index].title;
-              modalRelease.textContent =
+              modalName2.textContent =
+                "Show name: " + data.results[index].title;
+              modalRelease2.textContent =
                 "Release date: " + data.results[index].release_date;
-              modalPg.textContent = data.results[index].adult
+              modalPg2.textContent = data.results[index].adult
                 ? "Adult rating: R-rated"
                 : "Adult rating: PG-13";
               if (averageGrade && totalVotes) {
-                modalVote.innerHTML = `Average score: ${averageGrade} - total votes: ${totalVotes}`;
+                modalVote2.innerHTML = `Average score: ${averageGrade} - total votes: ${totalVotes}`;
               } //  genre id extraction
               for (let i = 0; i < data.results[index].genre_ids.length; i++) {
                 genreContainer.push(data.results[index].genre_ids[i]);
@@ -102,15 +109,13 @@ async function featureCarousel(url, container) {
                 }
               }
               //display genres
-              modalGenre.innerHTML = "Genre: " + genreNames.slice(0, -2);
+              modalGenre2.innerHTML = "Genre: " + genreNames.slice(0, -2);
               // end genre ex and con
-              modalOverview.innerHTML =
+              modalOverview2.innerHTML =
                 "Overview: " + data.results[index].overview;
             });
           }
         });
-
-        //
 
         // Initialize the Slick carousel after dynamically adding items
         $(container).slick({
@@ -159,4 +164,18 @@ async function featureCarousel(url, container) {
   }
 }
 
-// x
+const secondCarouselContainer = document.querySelector(
+  ".carousel-container--two"
+);
+const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=35&page=2`;
+featureCarouselTwo(anotherGenreCarouselUrl, secondCarouselContainer);
+
+document.body.onclick = () => {
+  if (!infoModal2.classList.contains("invisible-two")) {
+    infoModal2.classList.add("invisible-two");
+    movieContainer.style.filter = "blur(0px)";
+    console.log("SUCCESS");
+  } else {
+    console.log("success");
+  }
+};

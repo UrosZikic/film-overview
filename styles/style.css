@@ -32,6 +32,7 @@ main {
 }
 .image-container:hover img {
   filter: blur(4px) brightness(50%);
+  cursor: pointer;
 }
 .image-container:hover .movie-name {
   opacity: 1;
@@ -59,7 +60,8 @@ img {
   justify-self: center;
 }
 
-.info-modal {
+.info-modal,
+.info-modal-two {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -74,16 +76,27 @@ img {
   z-index: 3;
 }
 
-.modal-image {
+.modal-image,
+.modal-image-two {
   object-fit: cover;
 }
-.info-modal p {
+.info-modal p,
+.info-modal-two p {
   padding: 10px;
 }
-.info-inner p {
+.info-inner p,
+.info-inner-two p {
   color: #fff;
   font-size: 18px;
   line-height: 1.5;
+}
+.exit-modal-two {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  color: white;
+  background-color: transparent;
 }
 
 .wrapper {
@@ -94,7 +107,8 @@ img {
   z-index: 2;
 }
 
-.invisible {
+.invisible,
+.invisible-two {
   display: none;
 }
 
@@ -146,13 +160,15 @@ footer a {
 }
 
 @media only screen and (max-width: 600px) {
-  .info-inner p {
+  .info-inner p,
+  .info-inner-two p {
     font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .info-inner p {
+  .info-inner p,
+  .info-inner-two p {
     font-size: 12px;
   }
 }
