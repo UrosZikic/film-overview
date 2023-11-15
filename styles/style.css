@@ -61,7 +61,8 @@ img {
 }
 
 .info-modal,
-.info-modal-two {
+.info-modal-two,
+.info-modal-three {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -77,20 +78,24 @@ img {
 }
 
 .modal-image,
-.modal-image-two {
+.modal-image-two,
+.modal-image-three {
   object-fit: cover;
 }
 .info-modal p,
-.info-modal-two p {
+.info-modal-two p,
+.info-modal-three p {
   padding: 10px;
 }
 .info-inner p,
-.info-inner-two p {
+.info-inner-two p,
+.info-inner-three {
   color: #fff;
   font-size: 18px;
   line-height: 1.5;
 }
-.exit-modal-two {
+.exit-modal-two,
+.exit-modal-three {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -108,7 +113,8 @@ img {
 }
 
 .invisible,
-.invisible-two {
+.invisible-two,
+.invisible-three {
   display: none;
 }
 
