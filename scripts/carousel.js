@@ -1,3 +1,8 @@
+document.querySelector(".exit-modal-three").onclick = () => {
+  document.querySelector(".info-modal-three").classList.add("invisible-three");
+  movieContainer.style.filter = "blur(0px)";
+};
+
 const carouselContainer = document.querySelector(".carousel-container");
 const topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=28&page=2 `;
 featureCarousel(topRatedCarousel, carouselContainer);

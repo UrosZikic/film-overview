@@ -74,7 +74,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 2fr;
   /* filter: blur(0px) !important; */
-  z-index: 3;
+  z-index: 999;
 }
 
 .modal-image,
