@@ -167,14 +167,16 @@ footer a {
 
 @media only screen and (max-width: 600px) {
   .info-inner p,
-  .info-inner-two p {
+  .info-inner-two p,
+  .info-inner-three p {
     font-size: 15px;
   }
 }
 
 @media only screen and (max-width: 400px) {
   .info-inner p,
-  .info-inner-two p {
+  .info-inner-two p,
+  .info-inner-three p {
     font-size: 12px;
   }
 }
