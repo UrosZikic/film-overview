@@ -146,6 +146,11 @@ async function fetchMovies(url) {
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
 
+              const lModal2 = document.querySelector(".info-modal-two");
+              const lModal3 = document.querySelector(".info-modal-three");
+              lModal2.classList.add("invisible-two");
+              lModal3.classList.add("invisible-three");
+
               let genreContainer = [];
               let genreNames = "";
 

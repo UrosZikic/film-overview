@@ -71,7 +71,10 @@ async function featureCarouselTwo(url, container) {
 
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
-              console.log(data.results[index].title);
+              const lModal1 = document.querySelector(".info-modal");
+              const lModal3 = document.querySelector(".info-modal-three");
+              lModal1.classList.add("invisible");
+              lModal3.classList.add("invisible-three");
 
               let genreContainer = [];
               let genreNames = "";
@@ -179,3 +182,5 @@ document.body.onclick = () => {
     console.log("success");
   }
 };
+
+const lModal2 = document.querySelector(".info-modal-two");

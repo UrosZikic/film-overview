@@ -74,6 +74,11 @@ async function featureCarousel(url, container) {
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
 
+              const lModal1 = document.querySelector(".info-modal");
+              const lModal2 = document.querySelector(".info-modal-two");
+              lModal2.classList.add("invisible-two");
+              lModal1.classList.add("invisible");
+
               let genreContainer = [];
               let genreNames = "";
 
