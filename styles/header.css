@@ -10,11 +10,11 @@ header nav {
   justify-content: initial;
 }
 .navbar-nav-additional {
-  background: linear-gradient(to bottom right, #1864ab, #5f3dc4);
+  background-color: #141414;
 }
 
 .navScroll {
-  background: linear-gradient(to bottom right, #1864ab, #5f3dc4);
+  background-color: #141414;
   z-index: 100;
 }
 
