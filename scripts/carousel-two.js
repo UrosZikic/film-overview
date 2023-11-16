@@ -52,7 +52,7 @@ async function featureCarouselTwo(url, container) {
 
           // Check if the clicked element is not a descendant of infoModal2
           if (!infoModal2.contains(event.target)) {
-            // Add the "invisible-two" class to infoModal2
+            document.querySelector("body").style.overflow = "auto";
             infoModal2.classList.add("invisible-two");
             movieContainer.style.filter = "blur(0px)";
           }
@@ -75,6 +75,8 @@ async function featureCarouselTwo(url, container) {
               const lModal3 = document.querySelector(".info-modal-three");
               lModal1.classList.add("invisible");
               lModal3.classList.add("invisible-three");
+
+              document.querySelector("body").style.overflow = "hidden";
 
               let genreContainer = [];
               let genreNames = "";

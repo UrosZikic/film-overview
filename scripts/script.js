@@ -18,6 +18,7 @@ window.addEventListener("scroll", function () {
 
 // start responsive fixes
 const navbarResponsive = document.querySelector(".navbar-nav-manipulate");
+const toggleManipulate = document.querySelector(".toggler-manipulate");
 
 function resizeNav() {
   var windowWidth = window.innerWidth;
@@ -32,7 +33,18 @@ window.addEventListener("load", resizeNav);
 window.addEventListener("resize", resizeNav);
 // end responsive fixes
 
-// categories
+// close nav via toggle on smaller screens
+function toggleUp() {
+  if (window.innerWidth <= 991) {
+    toggleManipulate.click();
+  }
+}
+
+// minimize modal on click
+document.querySelector(".exit-modal").onclick = () => {
+  document.querySelector(".info-modal").classList.add("invisible");
+  movieContainer.style.filter = "blur(0px)";
+};
 
 // 0. Initial random call
 fetchMovies(discoverUrl);
@@ -42,6 +54,7 @@ const NPapiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKe
 const nowPlayingBtn = document.querySelector(".now-playing");
 nowPlayingBtn.onclick = () => {
   fetchMovies(NPapiUrl, "movie-id");
+  toggleUp();
 };
 
 // 2. Popular
@@ -49,6 +62,7 @@ const popularApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiK
 const popularBtn = document.querySelector(".popular");
 popularBtn.onclick = () => {
   fetchMovies(popularApiUrl, "movie-id");
+  toggleUp();
 };
 
 // 3.top rated
@@ -56,6 +70,7 @@ const topRatedApiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${a
 const topBtn = document.querySelector(".top");
 topBtn.onclick = () => {
   fetchMovies(topRatedApiUrl, "movie-id");
+  toggleUp();
 };
 
 // 4. upcoming
@@ -63,6 +78,7 @@ const upcomingApiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${ap
 const upcomingBtn = document.querySelector(".upcoming");
 upcomingBtn.onclick = () => {
   fetchMovies(upcomingApiUrl, "movie-id");
+  toggleUp();
 };
 
 const movieContainer = document.querySelector(".movie-container");
@@ -104,7 +120,7 @@ async function fetchMovies(url, el) {
             img.src = baseUrl + imageSize + data.results[i].backdrop_path;
           } else {
             img.src = baseUrl + imageSize + data.results[i].poster_path;
-            img.style.height = "227.61px";
+            img.style.position = "absolute";
             img.style.objectFit = "cover";
           }
           img.alt = "movie poster";
@@ -134,7 +150,7 @@ async function fetchMovies(url, el) {
 
           // Check if the clicked element is not a descendant of infoModal2
           if (!infoModal.contains(event.target)) {
-            // Add the "invisible-two" class to infoModal2
+            document.querySelector("body").style.overflow = "auto";
             infoModal.classList.add("invisible");
             movieContainer.style.filter = "blur(0px)";
           }
@@ -158,6 +174,8 @@ async function fetchMovies(url, el) {
               const lModal3 = document.querySelector(".info-modal-three");
               lModal2.classList.add("invisible-two");
               lModal3.classList.add("invisible-three");
+
+              document.querySelector("body").style.overflow = "hidden";
 
               let genreContainer = [];
               let genreNames = "";

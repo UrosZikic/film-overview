@@ -95,6 +95,7 @@ img {
   font-size: 18px;
   line-height: 1.5;
 }
+.exit-modal,
 .exit-modal-two,
 .exit-modal-three {
   position: absolute;
@@ -125,7 +126,7 @@ img {
 }
 .backdrop-path {
   height: 234px;
-  object-fit: contain;
+  object-fit: cover;
 }
 /* iframe styles */
 .youtube-container {
@@ -136,14 +137,18 @@ img {
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
 }
+.youtube-frame {
+  z-index: 2 !important;
+}
 
 .trailer-info {
   padding: 1rem;
+  z-index: 1;
 }
 
-.trailer-info h2,
 .trailer-info p {
   display: inline-block;
+  margin: 0;
 }
 
 footer {
@@ -162,7 +167,14 @@ footer a {
     grid-template-columns: 1fr;
   }
   .trailer-info {
-    padding: 0;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .trailer-info p {
+    font-size: 20px;
   }
 }
 

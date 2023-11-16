@@ -97,3 +97,9 @@ header form button ion-icon {
   text-align: center;
   color: white;
 }
+
+@media only screen and (max-width: 991px) {
+  nav {
+    background-color: #141414 !important;
+  }
+}

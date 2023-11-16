@@ -41,6 +41,7 @@ const trailerName = document.querySelector(".trailer-name");
 document.addEventListener("DOMContentLoaded", iFrameSet);
 
 document.addEventListener("resize", iFrameSet);
+// document.addEventListener("resize", moveModalPoster);
 
 function iFrameSet() {
   const trailer = Math.floor(Math.random() * trailers.results.length);
@@ -48,7 +49,8 @@ function iFrameSet() {
   let iFrameWidth = iFrame.clientWidth;
   iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
 
-  trailerName.textContent = trailers.results[trailer].name;
+  trailerName.textContent =
+    "You're watching: " + trailers.results[trailer].name;
   trailerInfo.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${trailers.results[trailer].image})`;
   trailerInfo.style.backgroundSize = "cover";
   trailerInfo.style.color = `${trailers.results[trailer].color}`;

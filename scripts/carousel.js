@@ -55,6 +55,7 @@ async function featureCarousel(url, container) {
 
         document.body.onclick = () => {
           if (!infoModal3.classList.contains("invisible-three")) {
+            document.querySelector("body").style.overflow = "auto";
             infoModal3.classList.add("invisible-three");
             movieContainer.style.filter = "blur(0px)";
           }
@@ -78,6 +79,8 @@ async function featureCarousel(url, container) {
               const lModal2 = document.querySelector(".info-modal-two");
               lModal2.classList.add("invisible-two");
               lModal1.classList.add("invisible");
+
+              document.querySelector("body").style.overflow = "hidden";
 
               let genreContainer = [];
               let genreNames = "";

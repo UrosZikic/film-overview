@@ -6,6 +6,7 @@ let currentPage = 1;
 
 const fetchAndClear = () => {
   fetchSpecificMovie(movieInput.value);
+  toggleUp();
   movieInput.value = "";
 };
 
@@ -33,9 +34,10 @@ async function fetchSpecificMovie(movieName) {
           return response.json();
         })
         .then((data) => {
+          console.log(data);
           if (data.total_results > 0) {
             resultNotification.classList.add("invisible");
-            console.log("executed");
+
             iFrameSet();
             scrollToMovies("movie-id");
             while (movieContainer.firstChild) {
@@ -90,15 +92,15 @@ async function fetchSpecificMovie(movieName) {
             const modalPg = document.querySelector(".modal-pg");
             const infoInner = document.querySelector(".info-inner");
 
-            document.body.onclick = (event) => {
-              const isInsideModal = event.target.closest(".info-modal");
-              if (!isInsideModal) {
-                if (!infoModal.classList.contains("invisible")) {
-                  infoModal.classList.add("invisible");
-                  movieContainer.style.filter = "blur(0px)";
-                }
-              }
-            };
+            // document.body.onclick = (event) => {
+            //   const isInsideModal = event.target.closest(".info-modal");
+            //   if (!isInsideModal) {
+            //     if (!infoModal.classList.contains("invisible")) {
+            //       infoModal.classList.add("invisible");
+            //       movieContainer.style.filter = "blur(0px)";
+            //     }
+            //   }
+            // };
             infoModal.onclick = (event) => {
               // Prevent the click event from propagating to the body
               event.stopPropagation();
@@ -111,7 +113,7 @@ async function fetchSpecificMovie(movieName) {
 
                 movie.addEventListener("click", function (event) {
                   event.stopPropagation();
-                  console.log("SUS");
+                  document.querySelector("body").style.overflow = "hidden";
 
                   let genreContainer = [];
                   let genreNames = "";

@@ -94,5 +94,6 @@ elements.forEach((element) => {
     }
     const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreId}`;
     fetchMovies(genreUrl, "movie-id");
+    toggleUp();
   };
 });
