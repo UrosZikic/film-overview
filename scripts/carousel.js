@@ -171,7 +171,3 @@ async function featureCarousel(url, container) {
     console.error("error", error);
   }
 }
-
-// x
-document.addEventListener("touchstart", handleTouchStart, { passive: true });
-document.addEventListener("wheel", handleWheel, { passive: true });

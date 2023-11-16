@@ -92,3 +92,8 @@ header form button ion-icon {
 .toggler-manipulate:hover {
   color: #fff;
 }
+
+.result-notification {
+  text-align: center;
+  color: white;
+}
