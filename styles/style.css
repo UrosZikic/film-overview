@@ -8,6 +8,7 @@
 body {
   background: linear-gradient(to bottom right, #141414, #880f15);
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 main {

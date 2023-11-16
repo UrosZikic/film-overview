@@ -41,33 +41,40 @@ fetchMovies(discoverUrl);
 const NPapiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`;
 const nowPlayingBtn = document.querySelector(".now-playing");
 nowPlayingBtn.onclick = () => {
-  fetchMovies(NPapiUrl);
+  fetchMovies(NPapiUrl, "movie-id");
 };
 
 // 2. Popular
 const popularApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=2`;
 const popularBtn = document.querySelector(".popular");
 popularBtn.onclick = () => {
-  fetchMovies(popularApiUrl);
+  fetchMovies(popularApiUrl, "movie-id");
 };
 
 // 3.top rated
 const topRatedApiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
 const topBtn = document.querySelector(".top");
 topBtn.onclick = () => {
-  fetchMovies(topRatedApiUrl);
+  fetchMovies(topRatedApiUrl, "movie-id");
 };
 
 // 4. upcoming
 const upcomingApiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=2`;
 const upcomingBtn = document.querySelector(".upcoming");
 upcomingBtn.onclick = () => {
-  fetchMovies(upcomingApiUrl);
+  fetchMovies(upcomingApiUrl, "movie-id");
 };
 
 const movieContainer = document.querySelector(".movie-container");
+
+function scrollToMovies(el) {
+  var element = document.getElementById(el);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
 //
-async function fetchMovies(url) {
+async function fetchMovies(url, el) {
   try {
     await fetch(url)
       .then((response) => {
@@ -79,6 +86,7 @@ async function fetchMovies(url) {
       .then((data) => {
         console.log(data);
         iFrameSet();
+        scrollToMovies(el);
         while (movieContainer.firstChild) {
           movieContainer.removeChild(movieContainer.firstChild);
         }
