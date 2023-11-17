@@ -92,8 +92,9 @@ elements.forEach((element) => {
         break;
       }
     }
-    const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreId}`;
-    fetchMovies(genreUrl, "movie-id");
+    const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreId}`;
+    currentApiUrl = genreUrl;
+    fetchMovies(currentApiUrl, "movie-id");
     toggleUp();
   };
 });

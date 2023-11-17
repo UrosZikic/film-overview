@@ -1,0 +1,21 @@
+.pagination {
+  gap: 5px;
+
+  padding: 20px 0px;
+  color: black !important;
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.pagination button {
+  color: #fff !important;
+  background-color: #000;
+  border: none;
+  padding: 10px;
+}
+.pagination button:hover {
+  background-color: #000;
+}

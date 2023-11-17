@@ -2,10 +2,12 @@
 const movieSubmit = document.querySelector(".submit-button");
 const movieInput = document.querySelector(".movie-browser");
 const resultNotification = document.querySelector(".result-notification");
-let currentPage = 1;
 
 const fetchAndClear = () => {
-  fetchSpecificMovie(movieInput.value);
+  currentApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
+    movieInput.value
+  )}`;
+  fetchSpecificMovie(movieInput.value, currentApiUrl);
   toggleUp();
   movieInput.value = "";
 };
@@ -19,14 +21,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 //
-async function fetchSpecificMovie(movieName) {
+async function fetchSpecificMovie(movieName, url) {
   try {
     if (movieName) {
-      await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-          movieName
-        )}&page=${currentPage}`
-      )
+      await fetch(url)
         .then((response) => {
           if (!response.ok) {
             throw new Error("error 404");
@@ -159,6 +157,43 @@ async function fetchSpecificMovie(movieName) {
                   // end genre ex and con
                   modalOverview.innerHTML =
                     "Overview: " + data.results[index].overview;
+
+                  // Pagination
+                  let paginationContainer =
+                    document.querySelector(".pagination");
+                  let pagination = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                  while (paginationContainer.firstChild) {
+                    paginationContainer.removeChild(
+                      paginationContainer.firstChild
+                    );
+                  }
+
+                  const prevLink = document.createElement("button");
+                  const nextLink = document.createElement("button");
+                  prevLink.textContent = "<";
+                  nextLink.textContent = ">";
+
+                  paginationContainer.appendChild(prevLink);
+
+                  for (let i = 1; i <= pagination.length; i++) {
+                    const page = document.createElement("button");
+                    page.textContent = `${i}`;
+                    page.classList.add("page-link");
+                    paginationContainer.appendChild(page);
+                  }
+                  paginationContainer.appendChild(nextLink);
+
+                  const pageLinks = document.querySelectorAll(".page-link");
+                  pageLinks.forEach((link, index) => {
+                    link.addEventListener("click", () => {
+                      // Calculate the page number based on the index
+                      const pageNumber = index + 1;
+                      // Use the correct API URL based on the current category
+                      const linkUrl = currentApiUrl + `&page=${pageNumber}`;
+                      fetchMovies(linkUrl, "movie-id");
+                    });
+                  });
+                  // end pagination
                 });
               }
             });
