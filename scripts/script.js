@@ -262,53 +262,62 @@ async function fetchMovies(url, el) {
           }
         });
         // pagination
-        window.addEventListener("load", () => {
-          let paginationContainer = document.querySelector(".pagination");
-          let pagination = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        // window.addEventListener("load", () => {
+        let paginationContainer = document.querySelector(".pagination");
+        while (paginationContainer.firstChild) {
+          paginationContainer.removeChild(paginationContainer.firstChild);
+        }
 
-          const prevLink = document.createElement("button");
-          const nextLink = document.createElement("button");
-          prevLink.textContent = "<";
-          nextLink.textContent = ">";
-          prevLink.classList.add("previous-page--link");
-          nextLink.classList.add("next-page--link");
+        let pagination = [];
+        for (let i = 1; i <= totalPages; i++) {
+          if (i <= 10) pagination.push(i);
+        }
 
-          //work in progress
-          // paginationContainer.appendChild(prevLink);
-          // const prevLinkDOM = document.querySelector(".previous-page--link");
+        const prevLink = document.createElement("button");
+        const nextLink = document.createElement("button");
+        prevLink.textContent = "<";
+        nextLink.textContent = ">";
+        prevLink.classList.add("previous-page--link");
+        nextLink.classList.add("next-page--link");
 
-          for (let i = pagination[0]; i <= pagination.length; i++) {
-            const page = document.createElement("button");
-            page.textContent = `${i}`;
-            page.classList.add("page-link");
-            paginationContainer.appendChild(page);
-          }
-          //work
-          // paginationContainer.appendChild(nextLink);
-          // const nextLinkDOM = document.querySelector(".next-page--link");
+        //work in progress
+        // paginationContainer.appendChild(prevLink);
+        // const prevLinkDOM = document.querySelector(".previous-page--link");
 
-          const pageLinks = document.querySelectorAll(".page-link");
+        for (let i = pagination[0]; i <= pagination.length; i++) {
+          const page = document.createElement("button");
+          page.textContent = `${i}`;
+          page.classList.add("page-link");
+          paginationContainer.appendChild(page);
+        }
+        //work
+        // paginationContainer.appendChild(nextLink);
+        // const nextLinkDOM = document.querySelector(".next-page--link");
 
-          pageLinks.forEach((link, index) => {
-            link.addEventListener("click", () => {
-              // Calculate the page number based on the index
-              pageNumber = index + 1;
-              localStorage.setItem("page-num", pageNumber);
-              console.log(localStorage.getItem("page-num"));
-              // Use the correct API URL based on the current category
-              const linkUrl = currentApiUrl + `&page=${pageNumber}`;
-              fetchMovies(linkUrl, "movie-id");
-            });
+        const pageLinks = document.querySelectorAll(".page-link");
+
+        pageLinks.forEach((link, index) => {
+          link.addEventListener("click", () => {
+            // Calculate the page number based on the index
+            pageNumber = index + 1;
+            localStorage.setItem("page-num", pageNumber);
+            console.log(localStorage.getItem("page-num"));
+            // Use the correct API URL based on the current category
+            const linkUrl = currentApiUrl + `&page=${pageNumber}`;
+            fetchMovies(linkUrl, "movie-id");
           });
-          //WORK IN PROGRESS - PAGINATION
-          // prevLinkDOM.addEventListener("click", () => {
-          //   const currentPageNumber = Number(localStorage.getItem("page-num"));
-          // });
-
-          // nextLinkDOM.addEventListener("click", () => {
-          //   const currentPageNumber = Number(localStorage.getItem("page-num"));
-          // });
         });
+        //WORK IN PROGRESS - PAGINATION
+        // prevLinkDOM.addEventListener("click", () => {
+        //   const currentPageNumber = Number(localStorage.getItem("page-num"));
+        // });
+
+        // nextLinkDOM.addEventListener("click", () => {
+        //   const currentPageNumber = Number(localStorage.getItem("page-num"));
+        // });
+
+        // }); important - load event closing brackets
+
         // end pagination
       })
       .catch((error) => {
