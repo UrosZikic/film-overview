@@ -1,5 +1,6 @@
 document.querySelector(".exit-modal-three").onclick = () => {
   document.querySelector(".info-modal-three").classList.add("invisible-three");
+  document.querySelector("body").style.overflow = "auto";
   movieContainer.style.filter = "blur(0px)";
 };
 

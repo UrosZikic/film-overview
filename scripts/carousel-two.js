@@ -1,5 +1,6 @@
 document.querySelector(".exit-modal-two").onclick = () => {
   document.querySelector(".info-modal-two").classList.add("invisible-two");
+  document.querySelector("body").style.overflow = "auto";
   movieContainer.style.filter = "blur(0px)";
 };
 

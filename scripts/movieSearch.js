@@ -8,7 +8,10 @@ const fetchAndClear = () => {
     movieInput.value
   )}`;
   fetchSpecificMovie(movieInput.value, currentApiUrl);
-  toggleUp();
+  if (movieInput.value) {
+    toggleUp();
+  }
+
   movieInput.value = "";
 };
 

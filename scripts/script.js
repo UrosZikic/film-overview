@@ -45,6 +45,7 @@ function toggleUp() {
 // minimize modal on click
 document.querySelector(".exit-modal").onclick = () => {
   document.querySelector(".info-modal").classList.add("invisible");
+  document.querySelector("body").style.overflow = "auto";
   movieContainer.style.filter = "blur(0px)";
 };
 
