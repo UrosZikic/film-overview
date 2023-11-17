@@ -47,7 +47,8 @@ document.querySelector(".exit-modal").onclick = () => {
 };
 
 // 0. Initial random call
-fetchMovies(discoverUrl);
+currentApiUrl = discoverUrl;
+fetchMovies(currentApiUrl);
 
 // 1. Now playing
 const NPapiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US`;
