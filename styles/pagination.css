@@ -2,7 +2,6 @@
   gap: 5px;
 
   padding: 20px 0px;
-  color: black !important;
   width: 100%;
   max-width: 640px;
   min-width: 320px;
@@ -11,11 +10,15 @@
   justify-content: center;
 }
 .pagination button {
-  color: #fff !important;
-  background-color: #000;
+  color: #000;
+  background-color: #fff;
   border: none;
   padding: 10px;
 }
 .pagination button:hover {
-  background-color: #000;
+  background-color: #fff;
+  color: red;
+}
+.pagination button:active {
+  color: #000;
 }

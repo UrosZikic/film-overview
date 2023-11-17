@@ -6,7 +6,7 @@
 }
 
 body {
-  background: linear-gradient(to bottom right, #141414, #880f15);
+  background: linear-gradient(to bottom right, #141414 50%, #141414);
   height: 100%;
   scroll-behavior: smooth;
 }

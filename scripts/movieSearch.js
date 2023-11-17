@@ -35,6 +35,8 @@ async function fetchSpecificMovie(movieName, url) {
           return response.json();
         })
         .then((data) => {
+          const totalPages = data.total_pages;
+          console.log(totalPages);
           console.log(data);
           if (data.total_results > 0) {
             resultNotification.classList.add("invisible");
@@ -178,10 +180,10 @@ async function fetchSpecificMovie(movieName, url) {
                   prevLink.classList.add("previous-page--link");
                   nextLink.classList.add("next-page--link");
 
-                  paginationContainer.appendChild(prevLink);
-                  const prevLinkDOM = document.querySelector(
-                    ".previous-page--link"
-                  );
+                  // paginationContainer.appendChild(prevLink);
+                  // const prevLinkDOM = document.querySelector(
+                  //   ".previous-page--link"
+                  // );
 
                   for (let i = 1; i <= pagination.length; i++) {
                     const page = document.createElement("button");
@@ -189,9 +191,9 @@ async function fetchSpecificMovie(movieName, url) {
                     page.classList.add("page-link");
                     paginationContainer.appendChild(page);
                   }
-                  paginationContainer.appendChild(nextLink);
-                  const nextLinkDOM =
-                    document.querySelector(".next-page--link");
+                  // paginationContainer.appendChild(nextLink);
+                  // const nextLinkDOM =
+                  //   document.querySelector(".next-page--link");
 
                   const pageLinks = document.querySelectorAll(".page-link");
 
@@ -204,31 +206,21 @@ async function fetchSpecificMovie(movieName, url) {
                       // Use the correct API URL based on the current category
                       const linkUrl = currentApiUrl + `&page=${pageNumber}`;
                       fetchMovies(linkUrl, "movie-id");
+                      console.log(index);
                     });
                   });
-                  prevLinkDOM.addEventListener("click", () => {
-                    const currentPageNumber = Number(
-                      localStorage.getItem("page-num")
-                    );
-                    if (currentPageNumber > 1) {
-                      linkUrl =
-                        currentApiUrl + `&page=${currentPageNumber - 1}`;
-                      localStorage.setItem("page-num", currentPageNumber - 1);
-                      console.log(localStorage.getItem("page-num"));
-                    } else {
-                      linkUrl = currentApiUrl + `&page=${1}`;
-                    }
-                    fetchMovies(linkUrl, "movie-id");
-                  });
-                  nextLinkDOM.addEventListener("click", () => {
-                    const currentPageNumber = Number(
-                      localStorage.getItem("page-num")
-                    );
-                    linkUrl = currentApiUrl + `&page=${currentPageNumber + 1}`;
-                    localStorage.setItem("page-num", currentPageNumber + 1);
-                    console.log(localStorage.getItem("page-num"));
-                    fetchMovies(linkUrl, "movie-id");
-                  });
+                  // WORK IN PROGRESS- PAGINATION
+                  // prevLinkDOM.addEventListener("click", () => {
+                  //   const currentPageNumber = Number(
+                  //     localStorage.getItem("page-num")
+                  //   );
+                  // });
+                  // nextLinkDOM.addEventListener("click", () => {
+                  //   const currentPageNumber = Number(
+                  //     localStorage.getItem("page-num")
+                  //   );
+                  // });
+
                   // end pagination
                 });
               }

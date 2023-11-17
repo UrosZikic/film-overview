@@ -108,9 +108,12 @@ async function fetchMovies(url, el) {
         return response.json();
       })
       .then((data) => {
-        console.log(url);
+        // retrieves the total amount of result pages
+        const totalPages = data.total_pages;
 
+        // sets a new trailer from my custom object
         iFrameSet();
+        // scrolls to the result section
         scrollToMovies(el);
         while (movieContainer.firstChild) {
           movieContainer.removeChild(movieContainer.firstChild);
@@ -270,17 +273,19 @@ async function fetchMovies(url, el) {
           prevLink.classList.add("previous-page--link");
           nextLink.classList.add("next-page--link");
 
-          paginationContainer.appendChild(prevLink);
-          const prevLinkDOM = document.querySelector(".previous-page--link");
+          //work in progress
+          // paginationContainer.appendChild(prevLink);
+          // const prevLinkDOM = document.querySelector(".previous-page--link");
 
-          for (let i = 1; i <= pagination.length; i++) {
+          for (let i = pagination[0]; i <= pagination.length; i++) {
             const page = document.createElement("button");
             page.textContent = `${i}`;
             page.classList.add("page-link");
             paginationContainer.appendChild(page);
           }
-          paginationContainer.appendChild(nextLink);
-          const nextLinkDOM = document.querySelector(".next-page--link");
+          //work
+          // paginationContainer.appendChild(nextLink);
+          // const nextLinkDOM = document.querySelector(".next-page--link");
 
           const pageLinks = document.querySelectorAll(".page-link");
 
@@ -295,25 +300,16 @@ async function fetchMovies(url, el) {
               fetchMovies(linkUrl, "movie-id");
             });
           });
-          prevLinkDOM.addEventListener("click", () => {
-            const currentPageNumber = Number(localStorage.getItem("page-num"));
-            if (currentPageNumber > 1) {
-              linkUrl = currentApiUrl + `&page=${currentPageNumber - 1}`;
-              localStorage.setItem("page-num", currentPageNumber - 1);
-              console.log(localStorage.getItem("page-num"));
-            } else {
-              linkUrl = currentApiUrl + `&page=${1}`;
-            }
-            fetchMovies(linkUrl, "movie-id");
-          });
-          nextLinkDOM.addEventListener("click", () => {
-            const currentPageNumber = Number(localStorage.getItem("page-num"));
-            linkUrl = currentApiUrl + `&page=${currentPageNumber + 1}`;
-            localStorage.setItem("page-num", currentPageNumber + 1);
-            console.log(localStorage.getItem("page-num"));
-            fetchMovies(linkUrl, "movie-id");
-          });
+          //WORK IN PROGRESS - PAGINATION
+          // prevLinkDOM.addEventListener("click", () => {
+          //   const currentPageNumber = Number(localStorage.getItem("page-num"));
+          // });
+
+          // nextLinkDOM.addEventListener("click", () => {
+          //   const currentPageNumber = Number(localStorage.getItem("page-num"));
+          // });
         });
+        // end pagination
       })
       .catch((error) => {
         console.error(`you have an error!`, error);
