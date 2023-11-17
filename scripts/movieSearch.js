@@ -11,6 +11,8 @@ const fetchAndClear = () => {
   if (movieInput.value) {
     toggleUp();
   }
+  const resultTitle = document.querySelector(".result-title");
+  resultTitle.textContent = "Results for: " + movieInput.value;
 
   movieInput.value = "";
 };

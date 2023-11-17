@@ -86,9 +86,12 @@ elements.forEach((element) => {
   element.onclick = () => {
     let genreId;
     const name = element.textContent;
+    document.querySelector(".result-title").textContent = name;
+
     for (let i = 0; i < genre.genres.length; i++) {
       if (name === genre.genres[i].name) {
         genreId = genre.genres[i].id;
+
         break;
       }
     }
