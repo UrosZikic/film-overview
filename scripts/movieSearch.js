@@ -60,10 +60,7 @@ async function fetchSpecificMovie(movieName, url) {
               ) {
                 img.src = baseUrl + imageSize + data.results[i].poster_path;
                 img.classList.add("poster-path");
-              } else if (
-                !data.results[i].poster_path &&
-                !data.results[i].backdrop_path
-              ) {
+              } else {
                 img.src =
                   "https://t3.ftcdn.net/jpg/05/09/38/44/360_F_509384487_IA21H3HyRO4whYBRcLG3BvClrRvXLvmw.jpg";
                 img.classList.add("poster-path");
@@ -127,8 +124,16 @@ async function fetchSpecificMovie(movieName, url) {
                   })`;
                   infoInner.style.backgroundSize = "cover";
 
-                  modalImage.src =
-                    baseUrl + imageSize + data.results[index].poster_path;
+                  if (data.results[index].poster_path) {
+                    modalImage.src =
+                      baseUrl + imageSize + data.results[index].poster_path;
+                  } else if (data.results[index].backdrop_path) {
+                    modalImage.src =
+                      baseUrl + imageSize + data.results[index].backdrop_path;
+                  } else {
+                    modalImage.src = "/images/tba.jpg";
+                  }
+
                   modalName.textContent =
                     "Show name: " + data.results[index].title;
                   modalRelease.textContent =
@@ -162,18 +167,18 @@ async function fetchSpecificMovie(movieName, url) {
                   let paginationContainer =
                     document.querySelector(".pagination");
                   let pagination = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-                  while (paginationContainer.firstChild) {
-                    paginationContainer.removeChild(
-                      paginationContainer.firstChild
-                    );
-                  }
 
                   const prevLink = document.createElement("button");
                   const nextLink = document.createElement("button");
                   prevLink.textContent = "<";
                   nextLink.textContent = ">";
+                  prevLink.classList.add("previous-page--link");
+                  nextLink.classList.add("next-page--link");
 
                   paginationContainer.appendChild(prevLink);
+                  const prevLinkDOM = document.querySelector(
+                    ".previous-page--link"
+                  );
 
                   for (let i = 1; i <= pagination.length; i++) {
                     const page = document.createElement("button");
@@ -182,16 +187,44 @@ async function fetchSpecificMovie(movieName, url) {
                     paginationContainer.appendChild(page);
                   }
                   paginationContainer.appendChild(nextLink);
+                  const nextLinkDOM =
+                    document.querySelector(".next-page--link");
 
                   const pageLinks = document.querySelectorAll(".page-link");
+
                   pageLinks.forEach((link, index) => {
                     link.addEventListener("click", () => {
                       // Calculate the page number based on the index
-                      const pageNumber = index + 1;
+                      pageNumber = index + 1;
+                      localStorage.setItem("page-num", pageNumber);
+                      console.log(localStorage.getItem("page-num"));
                       // Use the correct API URL based on the current category
                       const linkUrl = currentApiUrl + `&page=${pageNumber}`;
                       fetchMovies(linkUrl, "movie-id");
                     });
+                  });
+                  prevLinkDOM.addEventListener("click", () => {
+                    const currentPageNumber = Number(
+                      localStorage.getItem("page-num")
+                    );
+                    if (currentPageNumber > 1) {
+                      linkUrl =
+                        currentApiUrl + `&page=${currentPageNumber - 1}`;
+                      localStorage.setItem("page-num", currentPageNumber - 1);
+                      console.log(localStorage.getItem("page-num"));
+                    } else {
+                      linkUrl = currentApiUrl + `&page=${1}`;
+                    }
+                    fetchMovies(linkUrl, "movie-id");
+                  });
+                  nextLinkDOM.addEventListener("click", () => {
+                    const currentPageNumber = Number(
+                      localStorage.getItem("page-num")
+                    );
+                    linkUrl = currentApiUrl + `&page=${currentPageNumber + 1}`;
+                    localStorage.setItem("page-num", currentPageNumber + 1);
+                    console.log(localStorage.getItem("page-num"));
+                    fetchMovies(linkUrl, "movie-id");
                   });
                   // end pagination
                 });

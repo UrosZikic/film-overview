@@ -3,6 +3,8 @@ const apiKey = "245d71936de55c199391618d2d244f64";
 const discoverUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc`;
 // call specific page
 const TotalMoviePages = 41039;
+// starting page number
+localStorage.setItem("page-num", 1);
 
 const navigation = document.querySelector(".navJsClass");
 
@@ -106,6 +108,7 @@ async function fetchMovies(url, el) {
       })
       .then((data) => {
         console.log(url);
+
         iFrameSet();
         scrollToMovies(el);
         while (movieContainer.firstChild) {
@@ -129,9 +132,13 @@ async function fetchMovies(url, el) {
           // checks for the existence of a backdrop image source
           if (data.results[i].backdrop_path) {
             img.src = baseUrl + imageSize + data.results[i].backdrop_path;
-          } else {
+          } else if (data.results[i].poster_path) {
             // implements backup source
             img.src = baseUrl + imageSize + data.results[i].poster_path;
+            img.style.position = "absolute";
+            img.style.objectFit = "cover";
+          } else {
+            img.src = "images/tba.jpg";
             img.style.position = "absolute";
             img.style.objectFit = "cover";
           }
@@ -259,8 +266,11 @@ async function fetchMovies(url, el) {
           const nextLink = document.createElement("button");
           prevLink.textContent = "<";
           nextLink.textContent = ">";
+          prevLink.classList.add("previous-page--link");
+          nextLink.classList.add("next-page--link");
 
           paginationContainer.appendChild(prevLink);
+          const prevLinkDOM = document.querySelector(".previous-page--link");
 
           for (let i = 1; i <= pagination.length; i++) {
             const page = document.createElement("button");
@@ -269,16 +279,38 @@ async function fetchMovies(url, el) {
             paginationContainer.appendChild(page);
           }
           paginationContainer.appendChild(nextLink);
+          const nextLinkDOM = document.querySelector(".next-page--link");
 
           const pageLinks = document.querySelectorAll(".page-link");
+
           pageLinks.forEach((link, index) => {
             link.addEventListener("click", () => {
               // Calculate the page number based on the index
-              const pageNumber = index + 1;
+              pageNumber = index + 1;
+              localStorage.setItem("page-num", pageNumber);
+              console.log(localStorage.getItem("page-num"));
               // Use the correct API URL based on the current category
               const linkUrl = currentApiUrl + `&page=${pageNumber}`;
               fetchMovies(linkUrl, "movie-id");
             });
+          });
+          prevLinkDOM.addEventListener("click", () => {
+            const currentPageNumber = Number(localStorage.getItem("page-num"));
+            if (currentPageNumber > 1) {
+              linkUrl = currentApiUrl + `&page=${currentPageNumber - 1}`;
+              localStorage.setItem("page-num", currentPageNumber - 1);
+              console.log(localStorage.getItem("page-num"));
+            } else {
+              linkUrl = currentApiUrl + `&page=${1}`;
+            }
+            fetchMovies(linkUrl, "movie-id");
+          });
+          nextLinkDOM.addEventListener("click", () => {
+            const currentPageNumber = Number(localStorage.getItem("page-num"));
+            linkUrl = currentApiUrl + `&page=${currentPageNumber + 1}`;
+            localStorage.setItem("page-num", currentPageNumber + 1);
+            console.log(localStorage.getItem("page-num"));
+            fetchMovies(linkUrl, "movie-id");
           });
         });
       })
