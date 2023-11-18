@@ -4,8 +4,20 @@ document.querySelector(".exit-modal-three").onclick = () => {
   movieContainer.style.filter = "blur(0px)";
 };
 
+const carouselTitle = document.querySelector(".caro-title-one");
+
 const carouselContainer = document.querySelector(".carousel-container");
-const topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=28&page=2 `;
+const randPage = Math.floor(Math.random() * 10 + 1);
+const genreGroupOne = [0, 28, 12, 16, 35, 80, 99, 17, 10751, 14, 36];
+const randGenre = Math.floor(Math.random() * 10 + 1);
+
+for (let i = 0; i < genre.genres.length; i++) {
+  if (genreGroupOne[randGenre] === genre.genres[i].id) {
+    carouselTitle.textContent = "Best " + genre.genres[i].name + " flicks";
+  }
+}
+
+const topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
 featureCarousel(topRatedCarousel, carouselContainer);
 
 async function featureCarousel(url, container) {

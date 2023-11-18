@@ -173,7 +173,17 @@ async function featureCarouselTwo(url, container) {
 const secondCarouselContainer = document.querySelector(
   ".carousel-container--two"
 );
-const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=35&page=2`;
+const carouselTitleTwo = document.querySelector(".caro-title-two");
+const randPage2 = Math.floor(Math.random() * 10 + 1);
+const genreGroupTwo = [0, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37];
+const randGenre2 = Math.floor(Math.random() * 8 + 1);
+for (let i = 0; i < genre.genres.length; i++) {
+  if (genreGroupTwo[randGenre2] === genre.genres[i].id) {
+    carouselTitleTwo.textContent =
+      "Top picks from " + genre.genres[i].name + " genre";
+  }
+}
+const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreGroupTwo[randGenre2]}&page=${randPage2}`;
 featureCarouselTwo(anotherGenreCarouselUrl, secondCarouselContainer);
 
 document.body.onclick = () => {

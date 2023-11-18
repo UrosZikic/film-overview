@@ -22,3 +22,6 @@
 .pagination button:active {
   color: #000;
 }
+.carousel-outer h2 {
+  font-size: 24px;
+}
