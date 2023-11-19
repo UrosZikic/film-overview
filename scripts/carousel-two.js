@@ -133,9 +133,9 @@ async function featureCarouselTwo(url, container) {
           slidesToShow: 5,
           slidesToScroll: 6,
           prevArrow:
-            '<button class="slick-prev"><ion-icon name="chevron-back-outline"></ion-icon></button>',
+            '<button class="slick-prev" aria-label="scroll left"><ion-icon name="chevron-back-outline"></ion-icon></button>',
           nextArrow:
-            '<button class="slick-next"><ion-icon name="chevron-forward-outline"></ion-icon></button>',
+            '<button class="slick-next" aria-label="scroll right"><ion-icon name="chevron-forward-outline"></ion-icon></button>',
           responsive: [
             {
               breakpoint: 1024,
@@ -180,10 +180,10 @@ const genreGroupTwo = [0, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37];
 const randGenre2 = Math.floor(Math.random() * 8 + 1);
 for (let i = 0; i < genre.genres.length; i++) {
   if (genreGroupTwo[randGenre2] === genre.genres[i].id) {
-    carouselTitleTwo.textContent = "Top picks from " + "Comedy " + " genre";
+    carouselTitleTwo.textContent = "Top picks from " + "Sci-Fi " + " genre";
   }
 }
-const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&with_genres=35&page=${randPage2}`;
+const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&with_genres=10765&page=${randPage2}`;
 featureCarouselTwo(anotherGenreCarouselUrl, secondCarouselContainer);
 
 document.body.onclick = () => {

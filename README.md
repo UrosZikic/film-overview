@@ -20,26 +20,26 @@ Once the web app is running, you can:
 
 1. View movie trailer which change dynamically
 2. scroll carousels with popular movies
-3. take a look at a larger grid display of movie
-4. view movie info by clicking on the movie
+3. take a look at a larger grid display of movie posters
+4. view movie info by clicking on the movie poster
 5. browse and hunt for specific movies and shows via input
 6. browse through specific genres and categories (new movies, popular movies, highly rated movies).
 7. switch bages with pagination
 8. Enjoy my website from any device
 
 WEBSITE PROGRESSION:
-Parts complete:
+Parts completed:
 
-1. trailers section
-2. carousel sections
-3. on page load movie delivery
-4. category filter
-5. genre filter
-6. search functionality
-7. responsiveness
-8. information modal for every movie (opens by clicking the specific movie container and is fully dynamic)
-9. Implemented pagination
+1. Navigation
+2. trailers section
+3. carousel sections
+4. on page-load movie delivery
+5. category filter
+6. genre filter
+7. search functionality
+8. SEO - Meta tags, responsiveness, ios optimized
+9. information modal for every movie (opens by clicking the specific movie container and is fully dynamic)
+10. Implemented pagination
+11. Switch between Movies and TV shows
 
 In progress:
-
-1. Switch between Movies and TV shows

@@ -157,9 +157,9 @@ async function featureCarousel(url, container) {
           slidesToShow: 5,
           slidesToScroll: 6,
           prevArrow:
-            '<button class="slick-prev"><ion-icon name="chevron-back-outline"></ion-icon></button>',
+            '<button class="slick-prev" aria-label="Scroll Left""><ion-icon name="chevron-back-outline"></ion-icon></button>',
           nextArrow:
-            '<button class="slick-next"><ion-icon name="chevron-forward-outline"></ion-icon></button>',
+            '<button class="slick-next" aria-label="Scroll right""><ion-icon name="chevron-forward-outline"></ion-icon></button>',
           responsive: [
             {
               breakpoint: 1024,
