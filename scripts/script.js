@@ -100,6 +100,8 @@ function scrollToMovies(el) {
   }
 }
 //
+let pagination = [];
+
 async function fetchMovies(url, el) {
   try {
     await fetch(url)
@@ -112,7 +114,6 @@ async function fetchMovies(url, el) {
       .then((data) => {
         // retrieves the total amount of result pages
         const totalPages = data.total_pages;
-
         // sets a new trailer from my custom object
         iFrameSet();
         // scrolls to the result section
@@ -264,103 +265,116 @@ async function fetchMovies(url, el) {
           }
         });
         // pagination
-        // window.addEventListener("load", () => {
         let paginationContainer = document.querySelector(".pagination");
         while (paginationContainer.firstChild) {
           paginationContainer.removeChild(paginationContainer.firstChild);
         }
 
-        let pagination = [];
-        for (let i = 1; i <= totalPages; i++) {
-          if (i <= 10) pagination.push(i);
+        if (pagination.length === 0) {
+          for (let i = 1; i <= totalPages; i++) {
+            if (i <= 10) {
+              pagination.push(i);
+              if (pagination.length === 10) {
+                break;
+              }
+            }
+          }
+
+          const prevLink = document.createElement("button");
+          const nextLink = document.createElement("button");
+          prevLink.textContent = "<";
+          nextLink.textContent = ">";
+          prevLink.classList.add("previous-page--link");
+          nextLink.classList.add("next-page--link");
+
+          //work in progress
+          paginationContainer.appendChild(prevLink);
+          const prevLinkDOM = document.querySelector(".previous-page--link");
+
+          for (let i = 1; i <= pagination.length; i++) {
+            const page = document.createElement("button");
+            page.textContent = `${pagination[i - 1]}`;
+            page.classList.add("page-link");
+            paginationContainer.appendChild(page);
+          }
+          //work
+          paginationContainer.appendChild(nextLink);
+          const nextLinkDOM = document.querySelector(".next-page--link");
+        } else {
+          pagination = [];
+          pagination.push(Number(localStorage.getItem("page-num")));
+
+          for (let i = pagination[0] + 1; i <= totalPages; i++) {
+            if (i <= i + 9) {
+              pagination.push(i);
+              if (pagination.length === 10) {
+                break;
+              }
+            }
+          }
+
+          const prevLink = document.createElement("button");
+          const nextLink = document.createElement("button");
+          prevLink.textContent = "<";
+          nextLink.textContent = ">";
+          prevLink.classList.add("previous-page--link");
+          nextLink.classList.add("next-page--link");
+
+          //work in progress
+          paginationContainer.appendChild(prevLink);
+
+          for (let i = 1; i <= pagination.length; i++) {
+            const page = document.createElement("button");
+            page.textContent = `${pagination[i - 1]}`;
+            page.classList.add("page-link");
+            paginationContainer.appendChild(page);
+          }
+          //work
+          paginationContainer.appendChild(nextLink);
         }
-
-        const prevLink = document.createElement("button");
-        const nextLink = document.createElement("button");
-        prevLink.textContent = "<";
-        nextLink.textContent = ">";
-        prevLink.classList.add("previous-page--link");
-        nextLink.classList.add("next-page--link");
-
-        //work in progress
-        paginationContainer.appendChild(prevLink);
         const prevLinkDOM = document.querySelector(".previous-page--link");
-
-        for (let i = 1; i <= pagination.length; i++) {
-          const page = document.createElement("button");
-          page.textContent = `${pagination[i - 1]}`;
-          page.classList.add("page-link");
-          paginationContainer.appendChild(page);
-        }
-        //work
-        paginationContainer.appendChild(nextLink);
         const nextLinkDOM = document.querySelector(".next-page--link");
-
         const pageLinks = document.querySelectorAll(".page-link");
 
         let currentPageNumber = Number(localStorage.getItem("page-num"));
+
+        // API PAGE NUMBER DOESN'T UPDATE BEYOND INITIAL 1-10 -> IMPORTANT FIX
         pageLinks.forEach((link, index) => {
           link.addEventListener("click", () => {
             // Calculate the page number based on the index
-            pageNumber = index + 1;
+            pageNumber = Number(link.textContent);
             localStorage.setItem("page-num", pageNumber);
-            console.log(localStorage.getItem("page-num"));
             // Use the correct API URL based on the current category
             let linkUrl = currentApiUrl + `&page=${pageNumber}`;
             fetchMovies(linkUrl, "movie-id");
           });
         });
-        // });
-        //WORK IN PROGRESS - PAGINATION
-        prevLinkDOM.addEventListener("click", () => {
-          currentPageNumber = Number(localStorage.getItem("page-num"));
-          if (currentPageNumber > 1) {
-            console.log(currentPageNumber);
-            linkUrl = currentApiUrl + `&page=${currentPageNumber - 1}`;
-            console.log(linkUrl);
-            fetchMovies(linkUrl, "movie-id");
-            currentPageNumber = localStorage.setItem(
-              "page-num",
-              String(currentPageNumber - 1)
-            );
-            if (!pagination.includes(1)) {
-              pagination.pop();
-              pagination.unshift(pagination[0] - 1);
-            }
-          }
-        });
 
         nextLinkDOM.addEventListener("click", () => {
-          currentPageNumber = Number(localStorage.getItem("page-num"));
-          if (currentPageNumber >= 10) {
-            console.log(currentPageNumber);
-            linkUrl = currentApiUrl + `&page=${currentPageNumber + 1}`;
-            console.log(linkUrl);
-
-            currentPageNumber = localStorage.setItem(
-              "page-num",
-              String(currentPageNumber + 1)
-            );
-
-            pagination.push(pagination[pagination.length - 1] + 1);
-            pagination.shift();
-
-            while (paginationContainer.firstChild) {
-              paginationContainer.removeChild(paginationContainer.firstChild);
-            }
-
-            paginationContainer.appendChild(prevLink);
-            for (let i = 1; i <= pagination.length; i++) {
-              const page = document.createElement("button");
-              page.textContent = `${pagination[i - 1]}`;
-              page.classList.add("page-link");
-              paginationContainer.appendChild(page);
-            }
-
-            paginationContainer.appendChild(nextLink);
+          let currentLastPage = pagination[pagination.length - 1];
+          if (totalPages - currentLastPage >= 10) {
+            lastPage = currentLastPage + 1;
+          } else {
+            lastPage = totalPages - 9;
           }
+          //needs more work: what if 9
+          localStorage.setItem("page-num", lastPage);
+          let linkUrl = currentApiUrl + `&page=${lastPage}`;
+          fetchMovies(linkUrl, "movie-id");
         });
-        fetchMovies(linkUrl, "movie-id");
+
+        prevLinkDOM.addEventListener("click", () => {
+          let firstPage;
+          if (pagination[0] > 10) {
+            firstPage = pagination[0] - 10;
+          } else {
+            firstPage = 1;
+          }
+          localStorage.setItem("page-num", firstPage);
+          let linkUrl = currentApiUrl + `&page=${firstPage}`;
+          fetchMovies(linkUrl, "movie-id");
+        });
+
         // end pagination
       })
 

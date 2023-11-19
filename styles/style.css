@@ -162,6 +162,14 @@ footer a {
   text-decoration: underline;
 }
 
+@media only screen and (min-width: 901px) {
+  .backdrop-path,
+  .poster-path {
+    max-width: 375px;
+    object-fit: contain;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .youtube-container {
     grid-template-columns: 1fr;

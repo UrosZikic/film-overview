@@ -6,7 +6,8 @@
   max-width: 640px;
   min-width: 320px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
   justify-content: center;
 }
 .pagination button {
@@ -24,4 +25,15 @@
 }
 .carousel-outer h2 {
   font-size: 24px;
+}
+
+@media only screen and (max-width: 350px) {
+  .pagination {
+    margin-left: 5px;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .pagination {
+    margin-left: 15px;
+  }
 }
