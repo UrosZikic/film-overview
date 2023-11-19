@@ -180,8 +180,7 @@ const genreGroupTwo = [0, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37];
 const randGenre2 = Math.floor(Math.random() * 8 + 1);
 for (let i = 0; i < genre.genres.length; i++) {
   if (genreGroupTwo[randGenre2] === genre.genres[i].id) {
-    carouselTitleTwo.textContent =
-      "Top picks from " + genre.genres[i].name + " genre";
+    carouselTitleTwo.textContent = "Top picks from " + "Comedy " + " genre";
   }
 }
 const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&with_genres=35&page=${randPage2}`;

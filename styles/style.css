@@ -1,5 +1,6 @@
 * {
   font-family: "rubik", sans-serif;
+  font-weight: 300;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -9,6 +10,10 @@ body {
   background: linear-gradient(to bottom right, #141414 50%, #141414);
   height: 100%;
   scroll-behavior: smooth;
+}
+p,
+h2 {
+  font-weight: 300 !important;
 }
 
 main {
@@ -52,6 +57,7 @@ main {
   color: white;
   opacity: 0;
   transition: opacity 0.5s;
+  font-weight: 300;
 }
 
 img {
@@ -90,10 +96,11 @@ img {
 }
 .info-inner p,
 .info-inner-two p,
-.info-inner-three {
+.info-inner-three p {
   color: #fff;
   font-size: 18px;
   line-height: 1.5;
+  font-weight: 300;
 }
 .exit-modal,
 .exit-modal-two,
