@@ -13,7 +13,7 @@ const fetchAndClear = () => {
       movieInput.value
     )}`;
   }
-
+  localStorage.setItem("page-num", 1);
   fetchSpecificMovie(movieInput.value, currentApiUrl);
   if (movieInput.value) {
     toggleUp();

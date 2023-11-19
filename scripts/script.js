@@ -6,6 +6,9 @@ localStorage.setItem("page-num", 1);
 
 const navigation = document.querySelector(".navJsClass");
 
+// array for pagination
+let pagination = [];
+
 window.addEventListener("scroll", function () {
   // Get the number of pixels scrolled from the top
   var pixelsFromTop = window.scrollY;
@@ -56,7 +59,6 @@ const tvDefault = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&so
 const callTvDefault = document.querySelector(".type");
 
 callTvDefault.addEventListener("click", () => {
-  let topRatedCarousel;
   if (callTvDefault.innerHTML === "Series") {
     currentApiUrl = tvDefault;
     callTvDefault.innerHTML = "Movies";
@@ -64,8 +66,8 @@ callTvDefault.addEventListener("click", () => {
     currentApiUrl = discoverUrl;
     callTvDefault.innerHTML = "Series";
   }
+  pagination = [];
   fetchMovies(currentApiUrl, "movie-id");
-  // callCarousel();
   toggleUp();
 });
 
@@ -80,6 +82,7 @@ nowPlayingBtn.onclick = () => {
   } else {
     currentApiUrl = NPapiUrl;
   }
+  pagination = [];
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
@@ -96,6 +99,7 @@ popularBtn.onclick = () => {
   } else {
     currentApiUrl = popularApiUrl;
   }
+  pagination = [];
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
@@ -111,14 +115,14 @@ topBtn.onclick = () => {
   } else {
     currentApiUrl = topRatedApiUrl;
   }
-
+  pagination = [];
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
 
 // 4. upcoming
 const upcomingApiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US`;
-const upcomingTV = `https://api.themoviedb.org/3/tv/upcoming?api_key=${apiKey}`;
+const upcomingTV = `https://api.themoviedb.org/3/tv/airing_today?api_key=${apiKey}`;
 const upcomingBtn = document.querySelector(".upcoming");
 upcomingBtn.onclick = () => {
   document.querySelector(".result-title").textContent = "Upcoming Movies";
@@ -128,6 +132,7 @@ upcomingBtn.onclick = () => {
   } else {
     currentApiUrl = upcomingApiUrl;
   }
+  pagination = [];
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
@@ -140,8 +145,6 @@ function scrollToMovies(el) {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
-//
-let pagination = [];
 
 async function fetchMovies(url, el) {
   try {
@@ -157,7 +160,7 @@ async function fetchMovies(url, el) {
         // retrieves the total amount of result pages
         const totalPages = data.total_pages;
         // sets a new trailer from my custom object
-        iFrameSet();
+        iFramer();
         // scrolls to the result section
         scrollToMovies(el);
         while (movieContainer.firstChild) {

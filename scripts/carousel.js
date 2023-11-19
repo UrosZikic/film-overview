@@ -18,17 +18,14 @@ for (let i = 0; i < genre.genres.length; i++) {
   }
 }
 
-function callCarousel() {
-  let topRatedCarousel;
-  if (callTvDefault.innerHTML !== "Series") {
-    topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
-  } else {
-    topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
-  }
-  featureCarousel(topRatedCarousel, carouselContainer);
+let topRatedCarousel;
+if (callTvDefault.innerHTML !== "Series") {
+  topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
+} else {
+  topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
 }
+featureCarousel(topRatedCarousel, carouselContainer);
 
-callCarousel();
 async function featureCarousel(url, container) {
   try {
     await fetch(url)
