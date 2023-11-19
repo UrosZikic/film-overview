@@ -38,10 +38,9 @@ const iFrame = document.querySelector(".youtube-frame");
 const trailerInfo = document.querySelector(".trailer-info");
 const trailerName = document.querySelector(".trailer-name");
 
-document.addEventListener("DOMContentLoaded", iFrameSet);
+document.addEventListener("DOMContentLoaded", iFramer);
 
-window.addEventListener("resize", iFrameSet);
-// document.addEventListener("resize", moveModalPoster);
+window.addEventListener("resize", iFramer);
 
 function iFrameSet() {
   const trailer = Math.floor(Math.random() * trailers.results.length);
@@ -70,5 +69,13 @@ function iFrameSet() {
     trailerInfo.classList.remove("trailer-info-min");
     trailerName.classList.remove("trailer-paragraph-min");
     iFrame.classList.remove("iframe-min");
+  }
+}
+
+async function iFramer() {
+  try {
+    iFrameSet();
+  } catch (error) {
+    console.log("ad blocked", error);
   }
 }
