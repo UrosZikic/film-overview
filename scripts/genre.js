@@ -96,7 +96,14 @@ elements.forEach((element) => {
       }
     }
     const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreId}`;
-    currentApiUrl = genreUrl;
+    const TVgenre = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${genreId}`;
+
+    if (callTvDefault.innerHTML !== "Series") {
+      currentApiUrl = TVgenre;
+    } else {
+      currentApiUrl = genreUrl;
+    }
+    console.log(currentApiUrl);
     fetchMovies(currentApiUrl, "movie-id");
     toggleUp();
   };

@@ -4,9 +4,16 @@ const movieInput = document.querySelector(".movie-browser");
 const resultNotification = document.querySelector(".result-notification");
 
 const fetchAndClear = () => {
-  currentApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
-    movieInput.value
-  )}`;
+  if (callTvDefault.innerHTML !== "Series") {
+    currentApiUrl = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${encodeURIComponent(
+      movieInput.value
+    )}`;
+  } else {
+    currentApiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(
+      movieInput.value
+    )}`;
+  }
+
   fetchSpecificMovie(movieInput.value, currentApiUrl);
   if (movieInput.value) {
     toggleUp();
@@ -73,7 +80,9 @@ async function fetchSpecificMovie(movieName, url) {
               img.alt = "movie poster";
               img.classList.add("poster");
 
-              movieName.textContent = data.results[i].title;
+              movieName.textContent = data.results[i].title
+                ? data.results[i].title
+                : data.results[i].name;
               movieName.classList.add("movie-name");
 
               imageContainer.appendChild(img);
@@ -141,10 +150,12 @@ async function fetchSpecificMovie(movieName, url) {
                     modalImage.src = "/images/tba.jpg";
                   }
 
-                  modalName.textContent =
-                    "Show name: " + data.results[index].title;
-                  modalRelease.textContent =
-                    "Release date: " + data.results[index].release_date;
+                  modalName.textContent = data.results[index].title
+                    ? `Show name: ${data.results[index].title}`
+                    : `Show name: ${data.results[index].name}`;
+                  modalRelease.textContent = data.results[index].release_date
+                    ? `Release date: ${data.results[index].release_date}`
+                    : `First release on: ${data.results[index].first_air_date}`;
                   modalPg.textContent = data.results[index].adult
                     ? "Adult rating: R-rated"
                     : "Adult rating: PG-13";

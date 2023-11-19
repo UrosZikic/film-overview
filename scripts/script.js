@@ -51,42 +51,83 @@ document.querySelector(".exit-modal").onclick = () => {
 currentApiUrl = discoverUrl;
 fetchMovies(currentApiUrl);
 
+// TV SHOWS CALL
+const tvDefault = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&sort_by=popularity.desc`;
+const callTvDefault = document.querySelector(".type");
+
+callTvDefault.addEventListener("click", () => {
+  let topRatedCarousel;
+  if (callTvDefault.innerHTML === "Series") {
+    currentApiUrl = tvDefault;
+    callTvDefault.innerHTML = "Movies";
+  } else {
+    currentApiUrl = discoverUrl;
+    callTvDefault.innerHTML = "Series";
+  }
+  fetchMovies(currentApiUrl, "movie-id");
+  // callCarousel();
+  toggleUp();
+});
+
 // 1. Now playing
 const NPapiUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US`;
+const NPTVUrl = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${apiKey}`;
 const nowPlayingBtn = document.querySelector(".now-playing");
 nowPlayingBtn.onclick = () => {
   document.querySelector(".result-title").textContent = "Now Playing";
-  currentApiUrl = NPapiUrl;
+  if (callTvDefault.innerHTML !== "Series") {
+    currentApiUrl = NPTVUrl;
+  } else {
+    currentApiUrl = NPapiUrl;
+  }
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
 
 // 2. Popular
 const popularApiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US`;
+const popularTVUrl = `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`;
 const popularBtn = document.querySelector(".popular");
 popularBtn.onclick = () => {
   document.querySelector(".result-title").textContent = "Popular Movies";
-  currentApiUrl = popularApiUrl;
+
+  if (callTvDefault.innerHTML !== "Series") {
+    currentApiUrl = popularTVUrl;
+  } else {
+    currentApiUrl = popularApiUrl;
+  }
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
 
 // 3.top rated
 const topRatedApiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US`;
+const topRatedTV = `https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}`;
 const topBtn = document.querySelector(".top");
 topBtn.onclick = () => {
   document.querySelector(".result-title").textContent = "Top Rated Shows";
-  currentApiUrl = topRatedApiUrl;
+  if (callTvDefault.innerHTML !== "Series") {
+    currentApiUrl = topRatedTV;
+  } else {
+    currentApiUrl = topRatedApiUrl;
+  }
+
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
 
 // 4. upcoming
 const upcomingApiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US`;
+const upcomingTV = `https://api.themoviedb.org/3/tv/upcoming?api_key=${apiKey}`;
 const upcomingBtn = document.querySelector(".upcoming");
 upcomingBtn.onclick = () => {
   document.querySelector(".result-title").textContent = "Upcoming Movies";
-  currentApiUrl = upcomingApiUrl;
+
+  if (callTvDefault.innerHTML !== "Series") {
+    currentApiUrl = upcomingTV;
+  } else {
+    currentApiUrl = upcomingApiUrl;
+  }
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 };
@@ -112,6 +153,7 @@ async function fetchMovies(url, el) {
         return response.json();
       })
       .then((data) => {
+        console.log(data);
         // retrieves the total amount of result pages
         const totalPages = data.total_pages;
         // sets a new trailer from my custom object
@@ -155,7 +197,10 @@ async function fetchMovies(url, el) {
           img.classList.add("poster");
 
           //receives text
-          movieName.textContent = data.results[i].title;
+
+          movieName.textContent = data.results[i].title
+            ? data.results[i].title
+            : data.results[i].name;
           // receives styles
           movieName.classList.add("movie-name");
 
@@ -238,9 +283,12 @@ async function fetchMovies(url, el) {
 
               modalImage.src =
                 baseUrl + imageSize + data.results[index].poster_path;
-              modalName.textContent = "Show name: " + data.results[index].title;
-              modalRelease.textContent =
-                "Release date: " + data.results[index].release_date;
+              modalName.textContent = data.results[index].title
+                ? `Show name: ${data.results[index].title}`
+                : `Show name: ${data.results[index].name}`;
+              modalRelease.textContent = data.results[index].release_date
+                ? `Release date: ${data.results[index].release_date}`
+                : `First release on: ${data.results[index].first_air_date}`;
               modalPg.textContent = data.results[index].adult
                 ? "Adult rating: R-rated"
                 : "Adult rating: PG-13";

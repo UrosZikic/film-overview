@@ -3,10 +3,11 @@ document.querySelector(".exit-modal-three").onclick = () => {
   document.querySelector("body").style.overflow = "auto";
   movieContainer.style.filter = "blur(0px)";
 };
-
+// carousel
+var carouselContainer = document.querySelector(".carousel-container");
 const carouselTitle = document.querySelector(".caro-title-one");
 
-const carouselContainer = document.querySelector(".carousel-container");
+// var carouselContainer = document.querySelector(".carousel-container");
 const randPage = Math.floor(Math.random() * 10 + 1);
 const genreGroupOne = [0, 28, 12, 16, 35, 80, 17, 10751, 14, 36];
 const randGenre = Math.floor(Math.random() * 10 + 1);
@@ -17,9 +18,17 @@ for (let i = 0; i < genre.genres.length; i++) {
   }
 }
 
-const topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
-featureCarousel(topRatedCarousel, carouselContainer);
+function callCarousel() {
+  let topRatedCarousel;
+  if (callTvDefault.innerHTML !== "Series") {
+    topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
+  } else {
+    topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
+  }
+  featureCarousel(topRatedCarousel, carouselContainer);
+}
 
+callCarousel();
 async function featureCarousel(url, container) {
   try {
     await fetch(url)

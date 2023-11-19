@@ -205,6 +205,9 @@ footer a {
   z-index: 10;
   display: none;
 }
+.type {
+  color: red;
+}
 
 @media only screen and (max-width: 600px) {
   .info-inner p,
