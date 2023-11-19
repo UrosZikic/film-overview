@@ -40,7 +40,7 @@ const trailerName = document.querySelector(".trailer-name");
 
 document.addEventListener("DOMContentLoaded", iFrameSet);
 
-document.addEventListener("resize", iFrameSet);
+window.addEventListener("resize", iFrameSet);
 // document.addEventListener("resize", moveModalPoster);
 
 function iFrameSet() {
@@ -54,4 +54,21 @@ function iFrameSet() {
   trailerInfo.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${trailers.results[trailer].image})`;
   trailerInfo.style.backgroundSize = "cover";
   trailerInfo.style.color = `${trailers.results[trailer].color}`;
+
+  if (window.innerWidth <= 901) {
+    console.log("SUCCESS");
+    document
+      .querySelector(".youtube-container")
+      .classList.add("youtube-container-min");
+    trailerInfo.classList.add("trailer-info-min");
+    trailerName.classList.add("trailer-paragraph-min");
+    iFrame.classList.add("iframe-min");
+  } else {
+    document
+      .querySelector(".youtube-container")
+      .classList.remove("youtube-container-min");
+    trailerInfo.classList.remove("trailer-info-min");
+    trailerName.classList.remove("trailer-paragraph-min");
+    iFrame.classList.remove("iframe-min");
+  }
 }

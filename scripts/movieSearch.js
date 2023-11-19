@@ -113,6 +113,8 @@ async function fetchSpecificMovie(movieName, url) {
 
                 movie.addEventListener("click", function (event) {
                   event.stopPropagation();
+                  document.querySelector(".overlay-body").style.display =
+                    "block";
                   document.querySelector("body").style.overflow = "hidden";
 
                   let genreContainer = [];

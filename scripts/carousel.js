@@ -71,6 +71,7 @@ async function featureCarousel(url, container) {
             document.querySelector("body").style.overflow = "auto";
             infoModal3.classList.add("invisible-three");
             movieContainer.style.filter = "blur(0px)";
+            document.querySelector(".overlay-body").style.display = "none";
           }
         };
 
@@ -87,7 +88,7 @@ async function featureCarousel(url, container) {
 
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
-
+              document.querySelector(".overlay-body").style.display = "block";
               const lModal1 = document.querySelector(".info-modal");
               const lModal2 = document.querySelector(".info-modal-two");
               lModal2.classList.add("invisible-two");
