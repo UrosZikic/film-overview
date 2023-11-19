@@ -29,7 +29,7 @@ async function featureCarouselTwo(url, container) {
             image.src = baseUrl + imageSize + data.results[i].poster_path;
           }
           image.alt = "movie poster - carousel";
-          name.textContent = data.results[i].title;
+          name.textContent = data.results[i].name;
           name.classList.add("carousel-item--name");
           image.classList.add("image-container-two");
           item.appendChild(image);
@@ -97,10 +97,9 @@ async function featureCarouselTwo(url, container) {
 
               modalImage2.src =
                 baseUrl + imageSize + data.results[index].poster_path;
-              modalName2.textContent =
-                "Show name: " + data.results[index].title;
+              modalName2.textContent = "Show name: " + data.results[index].name;
               modalRelease2.textContent =
-                "Release date: " + data.results[index].release_date;
+                "Release date: " + data.results[index].first_air_date;
               modalPg2.textContent = data.results[index].adult
                 ? "Adult rating: R-rated"
                 : "Adult rating: PG-13";
@@ -176,7 +175,7 @@ const secondCarouselContainer = document.querySelector(
   ".carousel-container--two"
 );
 const carouselTitleTwo = document.querySelector(".caro-title-two");
-const randPage2 = Math.floor(Math.random() * 10 + 1);
+const randPage2 = Math.floor(Math.random() * 3 + 1);
 const genreGroupTwo = [0, 27, 10402, 9648, 10749, 878, 10770, 53, 10752, 37];
 const randGenre2 = Math.floor(Math.random() * 8 + 1);
 for (let i = 0; i < genre.genres.length; i++) {
@@ -185,7 +184,7 @@ for (let i = 0; i < genre.genres.length; i++) {
       "Top picks from " + genre.genres[i].name + " genre";
   }
 }
-const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreGroupTwo[randGenre2]}&page=${randPage2}`;
+const anotherGenreCarouselUrl = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&with_genres=35&page=${randPage2}`;
 featureCarouselTwo(anotherGenreCarouselUrl, secondCarouselContainer);
 
 document.body.onclick = () => {

@@ -79,6 +79,76 @@ const genre = {
   ],
 };
 
+const genreTV = {
+  genres: [
+    {
+      id: 10759,
+      name: "Action",
+    },
+    {
+      id: 16,
+      name: "Animation",
+    },
+    {
+      id: 35,
+      name: "Comedy",
+    },
+    {
+      id: 80,
+      name: "Crime",
+    },
+    {
+      id: 99,
+      name: "Documentary",
+    },
+    {
+      id: 18,
+      name: "Drama",
+    },
+    {
+      id: 10751,
+      name: "Family",
+    },
+    {
+      id: 10762,
+      name: "Kids",
+    },
+    {
+      id: 9648,
+      name: "Mystery",
+    },
+    {
+      id: 10763,
+      name: "News",
+    },
+    {
+      id: 10764,
+      name: "Reality",
+    },
+    {
+      id: 10765,
+      name: "Sci-Fi",
+    },
+    {
+      id: 10766,
+      name: "Soap",
+    },
+
+    {
+      id: 10767,
+      name: "Talk",
+    },
+    {
+      id: 10768,
+      name: "War & Politics",
+    },
+    {
+      id: 37,
+      name: "Western",
+    },
+  ],
+};
+
 // logic to retrieve the genre
 const elements = document.querySelectorAll(".genre");
 
@@ -88,22 +158,30 @@ elements.forEach((element) => {
     const name = element.textContent;
     document.querySelector(".result-title").textContent = name;
 
-    for (let i = 0; i < genre.genres.length; i++) {
-      if (name === genre.genres[i].name) {
-        genreId = genre.genres[i].id;
-
-        break;
+    if (callTvDefault.innerHTML === "Series") {
+      console.log("nope not series");
+      for (let i = 0; i < genre.genres.length; i++) {
+        if (name === genre.genres[i].name) {
+          genreId = genre.genres[i].id;
+          break;
+        }
+      }
+    } else {
+      console.log("yes series");
+      for (let i = 0; i < genre.genres.length; i++) {
+        if (name === genreTV.genres[i].name) {
+          genreId = genreTV.genres[i].id;
+          break;
+        }
       }
     }
     const genreUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreId}`;
     const TVgenre = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&with_genres=${genreId}`;
 
-    if (callTvDefault.innerHTML !== "Series") {
-      currentApiUrl = TVgenre;
-    } else {
-      currentApiUrl = genreUrl;
-    }
-    console.log(currentApiUrl);
+    currentApiUrl = callTvDefault.innerHTML === "Movies" ? TVgenre : genreUrl;
+
+    // -----------------------
+    pagination = [];
     fetchMovies(currentApiUrl, "movie-id");
     toggleUp();
   };

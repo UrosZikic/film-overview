@@ -61,9 +61,13 @@ const callTvDefault = document.querySelector(".type");
 callTvDefault.addEventListener("click", () => {
   if (callTvDefault.innerHTML === "Series") {
     currentApiUrl = tvDefault;
+    document.querySelector(".tv").style.display = "block";
+    document.querySelector(".movie").style.display = "none";
     callTvDefault.innerHTML = "Movies";
   } else {
     currentApiUrl = discoverUrl;
+    document.querySelector(".tv").style.display = "none";
+    document.querySelector(".movie").style.display = "block";
     callTvDefault.innerHTML = "Series";
   }
   pagination = [];

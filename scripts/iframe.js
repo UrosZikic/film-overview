@@ -41,10 +41,9 @@ const trailerName = document.querySelector(".trailer-name");
 document.addEventListener("DOMContentLoaded", iFramer);
 
 window.addEventListener("resize", iFramer);
-
+const trailer = Math.floor(Math.random() * trailers.results.length);
+iFrame.src = trailers.results[trailer].src;
 function iFrameSet() {
-  const trailer = Math.floor(Math.random() * trailers.results.length);
-  iFrame.src = trailers.results[trailer].src;
   let iFrameWidth = iFrame.clientWidth;
   iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
 

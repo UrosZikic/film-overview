@@ -8,7 +8,7 @@ var carouselContainer = document.querySelector(".carousel-container");
 const carouselTitle = document.querySelector(".caro-title-one");
 
 // var carouselContainer = document.querySelector(".carousel-container");
-const randPage = Math.floor(Math.random() * 10 + 1);
+const randPage = Math.floor(Math.random() * 3 + 1);
 const genreGroupOne = [0, 28, 12, 16, 35, 80, 17, 10751, 14, 36];
 const randGenre = Math.floor(Math.random() * 10 + 1);
 
@@ -20,9 +20,9 @@ for (let i = 0; i < genre.genres.length; i++) {
 
 let topRatedCarousel;
 if (callTvDefault.innerHTML !== "Series") {
-  topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
+  topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=16&page=${randPage}`;
 } else {
-  topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=${genreGroupOne[randGenre]}&page=${randPage}`;
+  topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=16&page=${randPage}`;
 }
 featureCarousel(topRatedCarousel, carouselContainer);
 
