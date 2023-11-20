@@ -38,11 +38,14 @@
 @media only screen and (max-width: 530px) {
   .list-genres:hover .genre-container {
     flex-direction: column;
-    justify-content: center;
-    align-items: end;
+    justify-content: baseline;
+    align-items: start;
   }
   .genre-container div div button {
     justify-self: start;
-    align-self: end;
+    align-self: start;
+  }
+  .phone--gap {
+    gap: 20px;
   }
 }
