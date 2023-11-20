@@ -164,7 +164,7 @@ async function fetchMovies(url, el) {
         // retrieves the total amount of result pages
         const totalPages = data.total_pages;
         // sets a new trailer from my custom object
-        iFramer();
+        iFrameSet(true);
         // scrolls to the result section
         scrollToMovies(el);
         while (movieContainer.firstChild) {

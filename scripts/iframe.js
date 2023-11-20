@@ -70,33 +70,36 @@ const iFrame = document.querySelector(".youtube-frame");
 const trailerInfo = document.querySelector(".trailer-info");
 const trailerName = document.querySelector(".trailer-name");
 
-document.addEventListener("DOMContentLoaded", iFramer);
-window.addEventListener("resize", iFramer);
+document.addEventListener("DOMContentLoaded", iFrameSet(true));
+window.addEventListener("resize", iFrameSet(false));
 
-function iFrameSet() {
-  const trailer = Math.floor(Math.random() * trailers.results.length);
-
+function iFrameSet(trailerValid) {
+  let trailer;
+  if (trailerValid) {
+    trailer = Math.floor(Math.random() * trailers.results.length);
+  }
   let iFrameWidth = iFrame.clientWidth;
   iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
 
-  if (callTvDefault.innerHTML === "Series") {
-    iFrame.src = trailers.results[trailer].src;
-    trailerName.textContent =
-      "You're watching: " + trailers.results[trailer].name;
-    trailerInfo.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${trailers.results[trailer].image})`;
-    trailerInfo.style.backgroundSize = "cover";
-    trailerInfo.style.color = `${trailers.results[trailer].color}`;
-  } else {
-    iFrame.src = trailers.resultsTV[trailer].src;
-    trailerName.textContent =
-      "You're watching: " + trailers.resultsTV[trailer].name;
-    trailerInfo.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${trailers.resultsTV[trailer].image})`;
-    trailerInfo.style.backgroundSize = "cover";
-    trailerInfo.style.color = `${trailers.resultsTV[trailer].color}`;
+  if (trailerValid) {
+    if (callTvDefault.innerHTML === "Series") {
+      iFrame.src = trailers.results[trailer].src;
+      trailerName.textContent =
+        "You're watching: " + trailers.results[trailer].name;
+      trailerInfo.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${trailers.results[trailer].image})`;
+      trailerInfo.style.backgroundSize = "cover";
+      trailerInfo.style.color = `${trailers.results[trailer].color}`;
+    } else {
+      iFrame.src = trailers.resultsTV[trailer].src;
+      trailerName.textContent =
+        "You're watching: " + trailers.resultsTV[trailer].name;
+      trailerInfo.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(${trailers.resultsTV[trailer].image})`;
+      trailerInfo.style.backgroundSize = "cover";
+      trailerInfo.style.color = `${trailers.resultsTV[trailer].color}`;
+    }
   }
 
   if (window.innerWidth <= 901) {
-    console.log("SUCCESS");
     document
       .querySelector(".youtube-container")
       .classList.add("youtube-container-min");
@@ -110,13 +113,5 @@ function iFrameSet() {
     trailerInfo.classList.remove("trailer-info-min");
     trailerName.classList.remove("trailer-paragraph-min");
     iFrame.classList.remove("iframe-min");
-  }
-}
-
-async function iFramer() {
-  try {
-    iFrameSet();
-  } catch (error) {
-    console.log("ad blocked", error);
   }
 }

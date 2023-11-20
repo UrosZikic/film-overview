@@ -159,7 +159,6 @@ elements.forEach((element) => {
     document.querySelector(".result-title").textContent = name;
 
     if (callTvDefault.innerHTML === "Series") {
-      console.log("nope not series");
       for (let i = 0; i < genre.genres.length; i++) {
         if (name === genre.genres[i].name) {
           genreId = genre.genres[i].id;
@@ -167,7 +166,6 @@ elements.forEach((element) => {
         }
       }
     } else {
-      console.log("yes series");
       for (let i = 0; i < genre.genres.length; i++) {
         if (name === genreTV.genres[i].name) {
           genreId = genreTV.genres[i].id;
