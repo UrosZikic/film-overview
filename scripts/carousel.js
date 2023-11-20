@@ -20,7 +20,7 @@ for (let i = 0; i < genre.genres.length; i++) {
 
 let topRatedCarousel;
 if (callTvDefault.innerHTML !== "Series") {
-  topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=16&page=${randPage}`;
+  topRatedCarousel = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&language=en-US&page=1&with_genres=16&page=2`;
 } else {
   topRatedCarousel = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&page=1&with_genres=16&page=${randPage}`;
 }
