@@ -70,16 +70,20 @@ const iFrame = document.querySelector(".youtube-frame");
 const trailerInfo = document.querySelector(".trailer-info");
 const trailerName = document.querySelector(".trailer-name");
 
-document.addEventListener("DOMContentLoaded", iFrameSet(true));
-window.addEventListener("resize", iFrameSet(false));
+document.addEventListener("DOMContentLoaded", function () {
+  iFrameSet(true);
+});
+window.addEventListener("resize", function () {
+  iFrameSet(true);
+});
 
 function iFrameSet(trailerValid) {
   let trailer;
+  let iFrameWidth = iFrame.clientWidth;
+  iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
   if (trailerValid) {
     trailer = Math.floor(Math.random() * trailers.results.length);
   }
-  let iFrameWidth = iFrame.clientWidth;
-  iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
 
   if (trailerValid) {
     if (callTvDefault.innerHTML === "Series") {
