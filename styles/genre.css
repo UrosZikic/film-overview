@@ -6,6 +6,7 @@
   left: -100px;
   display: none;
   background-color: black;
+  overflow: auto;
 }
 .genre-container div {
   display: flex;
@@ -47,5 +48,9 @@
   }
   .phone--gap {
     gap: 20px;
+  }
+
+  header nav ul li button {
+    padding: 3px;
   }
 }
