@@ -161,7 +161,6 @@ async function fetchMovies(url, el) {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         // retrieves the total amount of result pages
         const totalPages = data.total_pages;
         // sets a new trailer from my custom object

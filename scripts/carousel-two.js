@@ -14,7 +14,6 @@ async function featureCarouselTwo(url, container) {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const baseUrl = "https://image.tmdb.org/t/p/";
         const imageSize = "w500";
         // create carousel items
@@ -190,9 +189,6 @@ document.body.onclick = () => {
   if (!infoModal2.classList.contains("invisible-two")) {
     infoModal2.classList.add("invisible-two");
     movieContainer.style.filter = "blur(0px)";
-    console.log("SUCCESS");
-  } else {
-    console.log("success");
   }
 };
 

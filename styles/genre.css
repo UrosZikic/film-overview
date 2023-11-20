@@ -3,10 +3,16 @@
 }
 .genre-container {
   position: absolute;
+  left: -100px;
   display: none;
   background-color: black;
 }
 .genre-container div {
+  display: flex;
+  flex-direction: row;
+  z-index: 1;
+}
+.genre-container div > div {
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -22,4 +28,21 @@
 
 .tv {
   display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .genre-container {
+    left: 0;
+  }
+}
+@media only screen and (max-width: 530px) {
+  .list-genres:hover .genre-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+  }
+  .genre-container div div button {
+    justify-self: start;
+    align-self: end;
+  }
 }

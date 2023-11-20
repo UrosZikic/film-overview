@@ -36,7 +36,6 @@ async function featureCarousel(url, container) {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         const baseUrl = "https://image.tmdb.org/t/p/";
         const imageSize = "w500";
         for (let i = 0; i < data.results.length; i++) {
