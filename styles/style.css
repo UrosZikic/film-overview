@@ -217,7 +217,13 @@ footer a {
   bottom: 0;
   background-color: transparent;
   z-index: 10;
+  display: block;
+}
+.overlay-disappear {
   display: none;
+}
+.overlay-appear {
+  display: block;
 }
 .type {
   color: red;

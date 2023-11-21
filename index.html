@@ -41,6 +41,8 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" type="image/x-icon" href="icons\web-logo.png" />
     <link rel="stylesheet" href="styles/pagination.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="styles/contact.css" />
     <title>Movie Overview</title>
   </head>
   <body>
@@ -152,6 +154,11 @@
             <li>
               <button class="type">Series</button>
             </li>
+            <li>
+              <button class="contact-button" style="color: red">
+                Get in touch
+              </button>
+            </li>
           </ul>
 
           <div class="form-preview--container">
@@ -179,7 +186,7 @@
     </header>
 
     <main>
-      <div class="overlay-body"></div>
+      <div class="overlay-body overlay-disappear"></div>
       <div class="youtube-container">
         <div class="trailer-info">
           <p class="trailer-name"></p>
@@ -262,12 +269,20 @@
         </div>
       </div>
       <!-- x -->
+      <div class="form-container disappear">
+        <label for="name">Name</label>
+        <input id="from_name" type="text" />
+        <label for="email">Email</label>
+        <input type="email" id="email" />
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" />
+        <label for="message">Message</label>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <button onclick="sendMail();">Send</button>
+      </div>
     </main>
     <footer>
       <p>Created by: Uros Zikic</p>
-      <p>
-        <a href="mailto:uroszikic1512988@gmail.com">Get in touch via email</a>
-      </p>
     </footer>
     <script src="scripts/script.js"></script>
     <script src="scripts/genre.js"></script>
@@ -281,7 +296,7 @@
     <script src="scripts/carousel.js"></script>
     <script src="scripts/iframe.js" defer async></script>
     <script src="scripts/movieSearch.js"></script>
-
+    <script src="scripts/contact.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

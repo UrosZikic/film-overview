@@ -240,7 +240,9 @@ async function fetchMovies(url, el) {
             document.querySelector("body").style.overflow = "auto";
             infoModal.classList.add("invisible");
             movieContainer.style.filter = "blur(0px)";
-            document.querySelector(".overlay-body").style.display = "none";
+            document
+              .querySelector(".overlay-body")
+              .classList.add("overlay-disappear");
           }
         });
 
@@ -262,7 +264,9 @@ async function fetchMovies(url, el) {
             // Clicking any of the imgContainers will trigger the following function
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
-              document.querySelector(".overlay-body").style.display = "block";
+              document
+                .querySelector(".overlay-body")
+                .classList.remove("overlay-disappear");
               // checks for other modals and closes them so only 1 modal is open at a time
               const lModal2 = document.querySelector(".info-modal-two");
               const lModal3 = document.querySelector(".info-modal-three");

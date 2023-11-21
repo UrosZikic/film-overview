@@ -103,3 +103,9 @@ header form button ion-icon {
     background-color: #141414 !important;
   }
 }
+@media only screen and (min-width: 992px) and (max-width: 1125px) {
+  header nav ul li button {
+    font-size: 16px;
+    padding: 5px;
+  }
+}

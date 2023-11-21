@@ -55,7 +55,9 @@ async function featureCarouselTwo(url, container) {
             document.querySelector("body").style.overflow = "auto";
             infoModal2.classList.add("invisible-two");
             movieContainer.style.filter = "blur(0px)";
-            document.querySelector(".overlay-body").style.display = "none";
+            document
+              .querySelector(".overlay-body")
+              .classList.add("overlay-disappear");
           }
         });
         // MOVIE DETAILS MODAL
@@ -72,7 +74,9 @@ async function featureCarouselTwo(url, container) {
 
             movie.addEventListener("click", function (event) {
               event.stopPropagation();
-              document.querySelector(".overlay-body").style.display = "block";
+              document
+                .querySelector(".overlay-body")
+                .classList.remove("overlay-disappear");
               const lModal1 = document.querySelector(".info-modal");
               const lModal3 = document.querySelector(".info-modal-three");
               lModal1.classList.add("invisible");
