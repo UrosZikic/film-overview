@@ -306,7 +306,14 @@ async function fetchSpecificMovie(movieName, url) {
               }
             });
           } else {
-            fetchMovies(discoverUrl);
+            // execute based on series / movies filter
+            const type = document.querySelector(".type");
+            if (type.textContent === "Series") {
+              fetchMovies(discoverUrl);
+            } else {
+              const tvDefault = `https://api.themoviedb.org/3/discover/tv?api_key=${apiKey}&sort_by=popularity.desc`;
+              fetchMovies(tvDefault);
+            }
             resultNotification.classList.remove("invisible");
           }
         })
