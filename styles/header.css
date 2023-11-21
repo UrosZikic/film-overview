@@ -3,6 +3,7 @@ header nav {
   align-items: center;
   background-color: transparent;
   transition: background-color 0.5s;
+  background-color: #141414;
   position: fixed !important;
   z-index: 100;
   width: 100%;
