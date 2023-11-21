@@ -39,3 +39,10 @@
 .disappear {
   display: none;
 }
+.close-form {
+  width: 100%;
+  max-width: 120px !important;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}

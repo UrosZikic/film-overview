@@ -105,3 +105,9 @@ document.addEventListener("click", function (event) {
     }
   }
 });
+
+document.querySelector(".close-form").onclick = () => {
+  document.querySelector(".form-container").classList.add("disappear");
+  document.querySelector("html").style.overflowY = "scroll";
+  document.querySelector(".overlay-body").classList.remove("overlay-appear");
+};

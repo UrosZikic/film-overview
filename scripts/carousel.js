@@ -14,7 +14,7 @@ const randGenre = Math.floor(Math.random() * 10 + 1);
 
 for (let i = 0; i < genre.genres.length; i++) {
   if (genreGroupOne[randGenre] === genre.genres[i].id) {
-    carouselTitle.textContent = "Best " + genre.genres[i].name + " flicks";
+    carouselTitle.textContent = "Best " + "Animation" + " flicks";
   }
 }
 
