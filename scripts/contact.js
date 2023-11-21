@@ -1,4 +1,15 @@
 function sendMail() {
+  // Check if any of the required fields are empty
+  if (
+    !document.querySelector("#subject").value ||
+    !document.querySelector("#from_name").value ||
+    !document.querySelector("#message").value ||
+    !document.querySelector("#email").value
+  ) {
+    alert("Please fill in all required fields");
+    return; // Exit the function if any field is empty
+  }
+
   (function () {
     emailjs.init("K2PSUkRlxwE8wR98m"); // Replace with your actual user ID
   })();
@@ -26,6 +37,9 @@ function sendMail() {
   document.querySelector("#from_name").value = "";
   document.querySelector("#message").value = "";
   document.querySelector("#email").value = "";
+
+  const formContainer = document.querySelector(".form-container");
+  formContainer.classList.add("disappear");
 }
 
 document.querySelector(".contact-button").onclick = () => {

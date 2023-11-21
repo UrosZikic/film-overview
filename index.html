@@ -271,13 +271,13 @@
       <!-- x -->
       <div class="form-container disappear">
         <label for="name">Name</label>
-        <input id="from_name" type="text" />
+        <input id="from_name" type="text" required/>
         <label for="email">Email</label>
-        <input type="email" id="email" />
+        <input type="email" id="email" required/>
         <label for="subject">Subject</label>
-        <input type="text" id="subject" />
+        <input type="text" id="subject" required/>
         <label for="message">Message</label>
-        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea required>
         <button onclick="sendMail();">Send</button>
       </div>
     </main>
