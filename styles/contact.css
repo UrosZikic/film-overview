@@ -46,3 +46,7 @@
   right: 15px;
   bottom: 15px;
 }
+
+.no-scroll {
+  overflow-y: hidden !important;
+}

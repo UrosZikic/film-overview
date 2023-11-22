@@ -74,7 +74,7 @@ function sendMail() {
 
   const formContainer = document.querySelector(".form-container");
   formContainer.classList.add("disappear");
-  document.querySelector("html").style.overflowY = "scroll";
+  document.querySelector("body").classList.remove("no-scroll");
 }
 
 document.querySelector(".contact-button").onclick = () => {
@@ -82,11 +82,12 @@ document.querySelector(".contact-button").onclick = () => {
   const overlay = document.querySelector(".overlay-body");
   if (formContainer.classList.contains("disappear")) {
     formContainer.classList.remove("disappear");
-    document.querySelector("html").style.overflowY = "hidden";
+    document.querySelector("body").classList.add("no-scroll");
     overlay.classList.add("overlay-appear");
   } else {
     formContainer.classList.add("disappear");
-    document.querySelector("html").style.overflowY = "scroll";
+
+    document.querySelector("body").classList.remove("no-scroll");
     overlay.classList.remove("overlay-appear");
   }
 };
@@ -100,7 +101,7 @@ document.addEventListener("click", function (event) {
       !document.querySelector(".contact-button").contains(event.target)
     ) {
       formContainer.classList.add("disappear");
-      document.querySelector("html").style.overflowY = "scroll";
+      document.querySelector("body").classList.remove("no-scroll");
       overlay.classList.remove("overlay-appear");
     }
   }
@@ -108,6 +109,6 @@ document.addEventListener("click", function (event) {
 
 document.querySelector(".close-form").onclick = () => {
   document.querySelector(".form-container").classList.add("disappear");
-  document.querySelector("html").style.overflowY = "scroll";
+  document.querySelector("body").classList.remove("no-scroll");
   document.querySelector(".overlay-body").classList.remove("overlay-appear");
 };
