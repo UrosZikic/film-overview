@@ -57,7 +57,10 @@ async function featureCarousel(url, container) {
           // carouselContainer.appendChild(item);
           container.appendChild(item);
         }
+
         // modal attempt
+        // added
+        const opener = document.querySelectorAll(".item");
         const imgContainer3 = document.querySelectorAll(
           ".image-container-three"
         );
@@ -87,8 +90,8 @@ async function featureCarousel(url, container) {
           // Prevent the click event from propagating to the body
           event.stopPropagation();
         };
-
-        imgContainer3.forEach((movie, index) => {
+        // changed
+        opener.forEach((movie, index) => {
           if (data.results[index]) {
             let totalVotes = data.results[index].vote_count || 0;
             let averageGrade = data.results[index].vote_average || 0;

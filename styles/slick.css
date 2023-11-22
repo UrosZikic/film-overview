@@ -54,7 +54,7 @@
   position: absolute;
   top: 50%;
   justify-self: center;
-  text-align: center;
+  /* text-align: center; */
   font-size: 16px;
   font-weight: 700;
   color: white;

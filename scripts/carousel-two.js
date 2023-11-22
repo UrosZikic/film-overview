@@ -36,6 +36,7 @@ async function featureCarouselTwo(url, container) {
           container.appendChild(item);
         }
         // modal attempt
+        const opener = document.querySelectorAll(".item");
         const imgContainer2 = document.querySelectorAll(".image-container-two");
         const infoModal2 = document.querySelector(".info-modal-two");
         const modalImage2 = document.querySelector(".modal-image-two");
@@ -67,7 +68,7 @@ async function featureCarouselTwo(url, container) {
           // infoModal2.classList.add("invisible-two");
         };
 
-        imgContainer2.forEach((movie, index) => {
+        opener.forEach((movie, index) => {
           if (data.results[index]) {
             let totalVotes = data.results[index].vote_count || 0;
             let averageGrade = data.results[index].vote_average || 0;
