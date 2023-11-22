@@ -145,10 +145,17 @@ img {
 .youtube-container {
   width: 100%;
   max-width: 100rem;
+  height: 100%;
+  min-height: 194px;
+  max-height: 560px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
+}
+
+iframe {
+  height: 100%;
 }
 .youtube-frame {
   z-index: 2 !important;
@@ -205,7 +212,7 @@ footer a {
 }
 
 .iframe-min {
-  padding: 25px;
+  padding: 0rem 15px;
 }
 /* x */
 
@@ -242,5 +249,18 @@ footer a {
   .info-inner-two p,
   .info-inner-three p {
     font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 901px) {
+  .youtube-container {
+    position: relative;
+    grid-template-columns: 1fr;
+  }
+  .trailer-info {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
   }
 }

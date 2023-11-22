@@ -48,7 +48,7 @@ async function fetchSpecificMovie(movieName, url) {
           if (data.total_results > 0) {
             resultNotification.classList.add("invisible");
 
-            iFrameSet();
+            // iFrameSet(false);
             scrollToMovies("movie-id");
             while (movieContainer.firstChild) {
               movieContainer.removeChild(movieContainer.firstChild);

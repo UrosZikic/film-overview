@@ -71,7 +71,7 @@ callTvDefault.addEventListener("click", () => {
     callTvDefault.innerHTML = "Series";
   }
   pagination = [];
-  iFrameSet();
+  iFrameSet(true);
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 });

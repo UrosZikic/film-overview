@@ -73,19 +73,20 @@ const trailerName = document.querySelector(".trailer-name");
 document.addEventListener("DOMContentLoaded", function () {
   iFrameSet(true);
 });
+
 window.addEventListener("resize", function () {
-  iFrameSet(true);
+  iFrameSet(false);
 });
 
 function iFrameSet(trailerValid) {
   let trailer;
   let iFrameWidth = iFrame.clientWidth;
+  console.log(iFrameWidth);
+
   iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
-  if (trailerValid) {
-    trailer = Math.floor(Math.random() * trailers.results.length);
-  }
 
   if (trailerValid) {
+    trailer = Math.floor(Math.random() * trailers.results.length);
     if (callTvDefault.innerHTML === "Series") {
       iFrame.src = trailers.results[trailer].src;
       trailerName.textContent =
@@ -103,19 +104,19 @@ function iFrameSet(trailerValid) {
     }
   }
 
-  if (window.innerWidth <= 901) {
-    document
-      .querySelector(".youtube-container")
-      .classList.add("youtube-container-min");
-    trailerInfo.classList.add("trailer-info-min");
-    trailerName.classList.add("trailer-paragraph-min");
-    iFrame.classList.add("iframe-min");
-  } else {
-    document
-      .querySelector(".youtube-container")
-      .classList.remove("youtube-container-min");
-    trailerInfo.classList.remove("trailer-info-min");
-    trailerName.classList.remove("trailer-paragraph-min");
-    iFrame.classList.remove("iframe-min");
-  }
+  // if (document.body.clientWidth <= 901) {
+  //   document
+  //     .querySelector(".youtube-container")
+  //     .classList.add("youtube-container-min");
+  //   trailerInfo.classList.add("trailer-info-min");
+  //   trailerName.classList.add("trailer-paragraph-min");
+  //   iFrame.classList.add("iframe-min");
+  // } else {
+  //   document
+  //     .querySelector(".youtube-container")
+  //     .classList.remove("youtube-container-min");
+  //   trailerInfo.classList.remove("trailer-info-min");
+  //   trailerName.classList.remove("trailer-paragraph-min");
+  //   iFrame.classList.remove("iframe-min");
+  // }
 }
