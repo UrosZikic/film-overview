@@ -51,7 +51,7 @@ async function featureCarousel(url, container) {
           image.alt = "movie poster - carousel";
           name.textContent = data.results[i].title;
           name.classList.add("carousel-item--name");
-          image.classList.add("image-container-three");
+          item.classList.add("image-container-three");
           item.appendChild(image);
           item.appendChild(name);
           // carouselContainer.appendChild(item);
@@ -60,7 +60,7 @@ async function featureCarousel(url, container) {
 
         // modal attempt
         // added
-        const opener = document.querySelectorAll(".item");
+        // const opener = document.querySelectorAll(".item");
         const imgContainer3 = document.querySelectorAll(
           ".image-container-three"
         );
@@ -91,7 +91,7 @@ async function featureCarousel(url, container) {
           event.stopPropagation();
         };
         // changed
-        opener.forEach((movie, index) => {
+        imgContainer3.forEach((movie, index) => {
           if (data.results[index]) {
             let totalVotes = data.results[index].vote_count || 0;
             let averageGrade = data.results[index].vote_average || 0;

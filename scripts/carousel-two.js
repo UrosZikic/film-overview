@@ -30,13 +30,13 @@ async function featureCarouselTwo(url, container) {
           image.alt = "movie poster - carousel";
           name.textContent = data.results[i].name;
           name.classList.add("carousel-item--name");
-          image.classList.add("image-container-two");
+          item.classList.add("image-container-two");
           item.appendChild(image);
           item.appendChild(name);
           container.appendChild(item);
         }
         // modal attempt
-        const opener = document.querySelectorAll(".item");
+        // const opener = document.querySelectorAll(".item");
         const imgContainer2 = document.querySelectorAll(".image-container-two");
         const infoModal2 = document.querySelector(".info-modal-two");
         const modalImage2 = document.querySelector(".modal-image-two");
@@ -68,7 +68,7 @@ async function featureCarouselTwo(url, container) {
           // infoModal2.classList.add("invisible-two");
         };
 
-        opener.forEach((movie, index) => {
+        imgContainer2.forEach((movie, index) => {
           if (data.results[index]) {
             let totalVotes = data.results[index].vote_count || 0;
             let averageGrade = data.results[index].vote_average || 0;
