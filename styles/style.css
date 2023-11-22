@@ -152,6 +152,7 @@ img {
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
+  margin-bottom: 60px;
 }
 
 iframe {
