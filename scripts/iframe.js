@@ -81,7 +81,6 @@ window.addEventListener("resize", function () {
 function iFrameSet(trailerValid) {
   let trailer;
   let iFrameWidth = iFrame.clientWidth;
-  console.log(iFrameWidth);
 
   iFrame.style.height = (9 / 16) * parseInt(iFrameWidth) + "px";
 

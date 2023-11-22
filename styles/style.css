@@ -192,7 +192,7 @@ footer a {
 }
 
 /* x */
-.youtube-container-min {
+/* .youtube-container-min {
   grid-template-columns: 1fr;
   position: relative;
 }
@@ -208,13 +208,13 @@ footer a {
 }
 
 .trailer-paragraph-min {
-  /* font-size: 20px; */
+   font-size: 20px; 
   display: none !important;
 }
 
 .iframe-min {
   padding: 0rem 15px;
-}
+} */
 /* x */
 
 .overlay-body {
