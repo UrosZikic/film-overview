@@ -98,7 +98,7 @@ function sendMail() {
 
   if (domainCounter > 1) {
     document.querySelector(".form-notification").innerHTML =
-      "Please enter a valid email address. It cannot contain 2 or more mail domains.";
+      "Please enter a valid domain!";
     return; // Exit the function if the email contains both Gmail and Yahoo
   }
 
@@ -144,6 +144,7 @@ function sendMail() {
   document.querySelector("body").classList.remove("no-scroll");
 }
 
+// opening button
 document.querySelector(".contact-button").onclick = () => {
   const formContainer = document.querySelector(".form-container");
   const overlay = document.querySelector(".overlay-body");
@@ -151,14 +152,21 @@ document.querySelector(".contact-button").onclick = () => {
     formContainer.classList.remove("disappear");
     document.querySelector("body").classList.add("no-scroll");
     overlay.classList.add("overlay-appear");
+    document.querySelector(".movie-browser").disabled = true;
   } else {
     formContainer.classList.add("disappear");
-
     document.querySelector("body").classList.remove("no-scroll");
     overlay.classList.remove("overlay-appear");
+    document.querySelector(".movie-browser").disabled = false;
+    document.querySelector(".form-notification").innerHTML = "";
+    document.querySelector("#subject").value = "";
+    document.querySelector("#from_name").value = "";
+    document.querySelector("#message").value = "";
+    document.querySelector("#email").value = "";
   }
 };
 
+//closing function
 document.addEventListener("click", function (event) {
   const formContainer = document.querySelector(".form-container");
   const overlay = document.querySelector(".overlay-body");
@@ -170,13 +178,64 @@ document.addEventListener("click", function (event) {
       formContainer.classList.add("disappear");
       document.querySelector("body").classList.remove("no-scroll");
       overlay.classList.remove("overlay-appear");
+      document.querySelector(".movie-browser").disabled = false;
+      document.querySelector(".form-notification").innerHTML = "";
+      document.querySelector("#subject").value = "";
+      document.querySelector("#from_name").value = "";
+      document.querySelector("#message").value = "";
+      document.querySelector("#email").value = "";
     }
   }
 });
 
+// closing button
 document.querySelector(".close-form").onclick = () => {
   document.querySelector(".form-container").classList.add("disappear");
   document.querySelector("body").classList.remove("no-scroll");
   document.querySelector(".overlay-body").classList.remove("overlay-appear");
   document.querySelector(".form-notification").innerHTML = "";
+  document.querySelector(".movie-browser").disabled = false;
+  document.querySelector("#subject").value = "";
+  document.querySelector("#from_name").value = "";
+  document.querySelector("#message").value = "";
+  document.querySelector("#email").value = "";
 };
+
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Enter" &&
+    document.querySelector(".movie-browser").disabled === true
+  ) {
+    const formContainer = document.querySelector(".form-container");
+
+    formContainer.classList.remove("disappear");
+    event.preventDefault();
+
+    const focusedElement = document.activeElement;
+    const formElements = Array.from(
+      document.querySelectorAll(
+        ".form-container input[type='text'], .form-container input[type='email'], .form-container textarea"
+      )
+    );
+    const lastIndex = formElements.length - 1;
+    const currentIndex = formElements.indexOf(focusedElement);
+
+    if (currentIndex < lastIndex) {
+      // Focus on the next input element
+      formElements[currentIndex + 1].focus();
+    } else {
+      // Check if all required fields are filled
+      const allFieldsFilled = formElements.every(
+        (element) => element.type !== "text" || element.value.trim() !== ""
+      );
+
+      if (allFieldsFilled) {
+        // Trigger the button click if all required fields are filled
+        document.querySelector(".button-form--submit").click();
+      } else {
+        document.querySelector(".form-notification").innerHTML =
+          "Please fill in all required fields";
+      }
+    }
+  }
+});

@@ -199,7 +199,6 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen
           class="youtube-frame"
-         
         ></iframe>
       </div>
 
@@ -270,24 +269,26 @@
         </div>
       </div>
       <!-- x -->
-      <div class="form-container disappear">
+      <!-- <div  > -->
+      <div name="contact-form" class="form-container disappear">
         <button class="close-form">Exit</button>
-        <label for="name">Name</label>
-        <input id="from_name" type="text" required/>
+        <label for="from_name">Name</label>
+        <input id="from_name" name="from_name" type="text" required />
         <label for="email">Email</label>
-        <input type="email" id="email" required/>
+        <input type="email" name="email" id="email" required />
         <label for="subject">Subject</label>
-        <input type="text" id="subject" required/>
+        <input type="text" id="subject" name="subject" required />
         <label for="message">Message</label>
-        <textarea name="message" id="message" cols="30" rows="10"></textarea required>
-        <button onclick="sendMail();">Send</button>
+        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        <button class="button-form--submit" onclick="sendMail();">Send</button>
       </div>
+      <!-- </div> -->
     </main>
     <footer>
       <p>Created by: Uros Zikic</p>
     </footer>
     <script src="scripts/script.js"></script>
-    <script src="scripts/iframe.js" ></script>
+    <script src="scripts/iframe.js"></script>
     <script src="scripts/genre.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -297,7 +298,7 @@
     ></script>
     <script src="scripts/carousel-two.js"></script>
     <script src="scripts/carousel.js"></script>
-  
+
     <script src="scripts/movieSearch.js"></script>
     <script src="scripts/contact.js"></script>
     <script

@@ -27,7 +27,10 @@ const fetchAndClear = () => {
 movieSubmit.onclick = fetchAndClear;
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+  if (
+    event.key === "Enter" &&
+    document.querySelector(".form-container").classList.contains("disappear")
+  ) {
     movieSubmit.click();
   }
 });
