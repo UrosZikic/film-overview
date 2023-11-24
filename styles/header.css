@@ -45,6 +45,7 @@ header nav ul li button {
 .form-preview--container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .form-pretender {
@@ -95,8 +96,18 @@ header form button ion-icon {
 }
 
 .result-notification {
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+}
+.form-notification {
+  color: #fff;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  width: 100%;
   text-align: center;
-  color: white;
 }
 
 .form-control {
@@ -105,6 +116,12 @@ header form button ion-icon {
 @media only screen and (max-width: 991px) {
   nav {
     background-color: #141414 !important;
+  }
+  .result-notification {
+    bottom: unset;
+    top: -25px;
+    left: unset;
+    right: 0;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1125px) {

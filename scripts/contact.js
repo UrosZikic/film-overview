@@ -6,7 +6,8 @@ function sendMail() {
     !document.querySelector("#message").value ||
     !document.querySelector("#email").value
   ) {
-    alert("Please fill in all required fields");
+    document.querySelector(".form-notification").innerHTML =
+      "Please fill in all required fields";
     return; // Exit the function if any field is empty
   }
 
@@ -15,7 +16,8 @@ function sendMail() {
     !document.querySelector("#email").value.includes("@gmail.com") &&
     !document.querySelector("#email").value.includes("@yahoo.com")
   ) {
-    alert("Please provide a proper email");
+    document.querySelector(".form-notification").innerHTML =
+      "Please provide a proper email";
     return;
   }
   // Define a regular expression for valid Gmail or Yahoo addresses
@@ -29,7 +31,8 @@ function sendMail() {
       yahooRegex.test(document.querySelector("#email").value)
     )
   ) {
-    alert("Please enter a valid Gmail or Yahoo address");
+    document.querySelector(".form-notification").innerHTML =
+      "Please enter a valid Gmail or Yahoo address";
     return; // Exit the function if the email is not Gmail or Yahoo
   }
 
@@ -38,9 +41,8 @@ function sendMail() {
     document.querySelector("#email").value.includes("@gmail.com") &&
     document.querySelector("#email").value.includes("@yahoo.com")
   ) {
-    alert(
-      "Please enter a valid email address. It cannot contain both Gmail and Yahoo domains."
-    );
+    document.querySelector(".form-notification").innerHTML =
+      "Please enter a valid email address. It cannot contain both Gmail and Yahoo domains.";
     return; // Exit the function if the email contains both Gmail and Yahoo
   }
 
@@ -61,8 +63,14 @@ function sendMail() {
   emailjs
     .send(serviceID, templateID, params)
     .then((res) => {
-      alert("Email sent successfully");
+      document.querySelector(".form-notification").innerHTML =
+        "Email sent successfully";
+
+      setTimeout(() => {
+        document.querySelector(".form-notification").innerHTML = "";
+      }, 2000);
     })
+
     .catch((error) => {
       console.error("Error sending email: ", error);
     });
@@ -111,4 +119,5 @@ document.querySelector(".close-form").onclick = () => {
   document.querySelector(".form-container").classList.add("disappear");
   document.querySelector("body").classList.remove("no-scroll");
   document.querySelector(".overlay-body").classList.remove("overlay-appear");
+  document.querySelector(".form-notification").innerHTML = "";
 };
