@@ -102,27 +102,6 @@ function sendMail() {
     return; // Exit the function if the email contains both Gmail and Yahoo
   }
 
-  // if (
-  //   document.querySelector("#email").value.includes("@gmail.com") &&
-  //   document.querySelector("#email").value.includes("@yahoo.com") &&
-  //   document.querySelector("#email").value.includes("@hotmail.com") &&
-  //   document.querySelector("#email").value.includes("@outlook.com") &&
-  //   document.querySelector("#email").value.includes("@aol.com") &&
-  //   document.querySelector("#email").value.includes("@icloud.com") &&
-  //   document.querySelector("#email").value.includes("@protonmail.com") &&
-  //   document.querySelector("#email").value.includes("@mail.com") &&
-  //   document.querySelector("#email").value.includes("@yandex.com") &&
-  //   document.querySelector("#email").value.includes("@livemail.com") &&
-  //   document.querySelector("#email").value.includes("@msn.com") &&
-  //   document.querySelector("#email").value.includes("@zoho.com") &&
-  //   document.querySelector("#email").value.includes("@gmx.com") &&
-  //   document.querySelector("#email").value.includes("@fastmail.com")
-  // ) {
-  //   document.querySelector(".form-notification").innerHTML =
-  //     "Please enter a valid email address. It cannot contain 2 or more mail domains.";
-  //   return; // Exit the function if the email contains both Gmail and Yahoo
-  // }
-
   (function () {
     emailjs.init("K2PSUkRlxwE8wR98m"); // Replace with your actual user ID
   })();
@@ -146,6 +125,9 @@ function sendMail() {
       setTimeout(() => {
         document.querySelector(".form-notification").innerHTML = "";
       }, 2000);
+      document
+        .querySelector(".overlay-body")
+        .classList.remove("overlay-appear");
     })
 
     .catch((error) => {
