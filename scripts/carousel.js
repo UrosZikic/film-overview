@@ -2,6 +2,11 @@ document.querySelector(".exit-modal-three").onclick = () => {
   document.querySelector(".info-modal-three").classList.add("invisible-three");
   document.querySelector("body").style.overflow = "auto";
   movieContainer.style.filter = "blur(0px)";
+  document.querySelectorAll(".carousel-outer").forEach((container) => {
+    container.style.filter = "blur(0px)";
+  });
+  document.querySelector(".result-title").style.filter = "blur(0px)";
+  document.querySelector(".youtube-container").style.filter = "blur(0px)";
 };
 // carousel
 var carouselContainer = document.querySelector(".carousel-container");
@@ -80,6 +85,14 @@ async function featureCarousel(url, container) {
             infoModal3.classList.add("invisible-three");
             movieContainer.style.filter = "blur(0px)";
             document
+              .querySelectorAll(".carousel-outer")
+              .forEach((container) => {
+                container.style.filter = "blur(0px)";
+              });
+            document.querySelector(".result-title").style.filter = "blur(0px)";
+            document.querySelector(".youtube-container").style.filter =
+              "blur(0px)";
+            document
               .querySelector(".overlay-body")
               .classList.add("overlay-disappear");
           }
@@ -112,6 +125,15 @@ async function featureCarousel(url, container) {
               let genreNames = "";
 
               movieContainer.style.filter = "blur(4px)";
+              document
+                .querySelectorAll(".carousel-outer")
+                .forEach((container) => {
+                  container.style.filter = "blur(4px)";
+                });
+              document.querySelector(".result-title").style.filter =
+                "blur(4px)";
+              document.querySelector(".youtube-container").style.filter =
+                "blur(4px)";
 
               if (infoModal3.classList.contains("invisible-three")) {
                 infoModal3.classList.remove("invisible-three");

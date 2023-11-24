@@ -48,6 +48,11 @@ document.querySelector(".exit-modal").onclick = () => {
   document.querySelector(".info-modal").classList.add("invisible");
   document.querySelector("body").style.overflow = "auto";
   movieContainer.style.filter = "blur(0px)";
+  document.querySelectorAll(".carousel-outer").forEach((container) => {
+    container.style.filter = "blur(0px)";
+  });
+  document.querySelector(".result-title").style.filter = "blur(0px)";
+  document.querySelector(".youtube-container").style.filter = "blur(0px)";
 };
 
 // 0. Initial random call
@@ -243,6 +248,14 @@ async function fetchMovies(url, el) {
             infoModal.classList.add("invisible");
             movieContainer.style.filter = "blur(0px)";
             document
+              .querySelectorAll(".carousel-outer")
+              .forEach((container) => {
+                container.style.filter = "blur(0px)";
+              });
+            document.querySelector(".result-title").style.filter = "blur(0px)";
+            document.querySelector(".youtube-container").style.filter =
+              "blur(0px)";
+            document
               .querySelector(".overlay-body")
               .classList.add("overlay-disappear");
           }
@@ -283,7 +296,15 @@ async function fetchMovies(url, el) {
 
               // while modal is open, the layout outside is blurred
               movieContainer.style.filter = "blur(4px)";
-
+              document
+                .querySelectorAll(".carousel-outer")
+                .forEach((container) => {
+                  container.style.filter = "blur(4px)";
+                });
+              document.querySelector(".result-title").style.filter =
+                "blur(4px)";
+              document.querySelector(".youtube-container").style.filter =
+                "blur(4px)";
               // removes the invisibility style from the element while it's open
               if (infoModal.classList.contains("invisible")) {
                 infoModal.classList.remove("invisible");

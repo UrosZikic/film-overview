@@ -10,11 +10,38 @@ function sendMail() {
       "Please fill in all required fields";
     return; // Exit the function if any field is empty
   }
-
+  const domains = [
+    "@gmail.com",
+    "@yahoo.com",
+    "@hotmail.com",
+    "@outlook.com",
+    "@aol.com",
+    "@icloud.com",
+    "@protonmail.com",
+    "@mail.com",
+    "@yandex.com",
+    "@livemail.com",
+    "@msn.com",
+    "@zoho.com",
+    "@gmx.com",
+    "@fastmail.com",
+  ];
   // Check for proper email extension
   if (
     !document.querySelector("#email").value.includes("@gmail.com") &&
-    !document.querySelector("#email").value.includes("@yahoo.com")
+    !document.querySelector("#email").value.includes("@yahoo.com") &&
+    !document.querySelector("#email").value.includes("@hotmail.com") &&
+    !document.querySelector("#email").value.includes("@outlook.com") &&
+    !document.querySelector("#email").value.includes("@aol.com") &&
+    !document.querySelector("#email").value.includes("@icloud.com") &&
+    !document.querySelector("#email").value.includes("@protonmail.com") &&
+    !document.querySelector("#email").value.includes("@mail.com") &&
+    !document.querySelector("#email").value.includes("@yandex.com") &&
+    !document.querySelector("#email").value.includes("@livemail.com") &&
+    !document.querySelector("#email").value.includes("@msn.com") &&
+    !document.querySelector("#email").value.includes("@zoho.com") &&
+    !document.querySelector("#email").value.includes("@gmx.com") &&
+    !document.querySelector("#email").value.includes("@fastmail.com")
   ) {
     document.querySelector(".form-notification").innerHTML =
       "Please provide a proper email";
@@ -23,28 +50,78 @@ function sendMail() {
   // Define a regular expression for valid Gmail or Yahoo addresses
   const gmailRegex = /^[a-zA-Z0-9._-]+@gmail\.com$/;
   const yahooRegex = /^[a-zA-Z0-9._-]+@yahoo\.com$/;
+  const hotmailRegex = /^[a-zA-Z0-9._-]+@hotmail\.com$/;
+  const outlookRegex = /^[a-zA-Z0-9._-]+@outlook\.com$/;
+  const aolRegex = /^[a-zA-Z0-9._-]+@aol\.com$/;
+  const icloudRegex = /^[a-zA-Z0-9._-]+@icloud\.com$/;
+  const protonmailRegex = /^[a-zA-Z0-9._-]+@protonmail\.com$/;
+  const mailRegex = /^[a-zA-Z0-9._-]+@mail\.com$/;
+  const yandexRegex = /^[a-zA-Z0-9._-]+@yandex\.com$/;
+  const livemailRegex = /^[a-zA-Z0-9._-]+@livemail\.com$/;
+  const msnRegex = /^[a-zA-Z0-9._-]+@msn\.com$/;
+  const zohoRegex = /^[a-zA-Z0-9._-]+@zoho\.com$/;
+  const gmxRegex = /^[a-zA-Z0-9._-]+@gmx\.com$/;
+  const fastmailRegex = /^[a-zA-Z0-9._-]+@fastmail\.com$/;
 
   // Check if the email matches the defined patterns
   if (
     !(
       gmailRegex.test(document.querySelector("#email").value) ||
-      yahooRegex.test(document.querySelector("#email").value)
+      yahooRegex.test(document.querySelector("#email").value) ||
+      hotmailRegex.test(document.querySelector("#email").value) ||
+      outlookRegex.test(document.querySelector("#email").value) ||
+      aolRegex.test(document.querySelector("#email").value) ||
+      icloudRegex.test(document.querySelector("#email").value) ||
+      protonmailRegex.test(document.querySelector("#email").value) ||
+      mailRegex.test(document.querySelector("#email").value) ||
+      yandexRegex.test(document.querySelector("#email").value) ||
+      livemailRegex.test(document.querySelector("#email").value) ||
+      msnRegex.test(document.querySelector("#email").value) ||
+      zohoRegex.test(document.querySelector("#email").value) ||
+      gmxRegex.test(document.querySelector("#email").value) ||
+      fastmailRegex.test(document.querySelector("#email").value)
     )
   ) {
     document.querySelector(".form-notification").innerHTML =
-      "Please enter a valid Gmail or Yahoo address";
+      "Please enter a valid address";
     return; // Exit the function if the email is not Gmail or Yahoo
   }
 
-  // Check if the email contains both "@gmail.com" and "@yahoo.com"
-  if (
-    document.querySelector("#email").value.includes("@gmail.com") &&
-    document.querySelector("#email").value.includes("@yahoo.com")
-  ) {
+  // Check if the email contains both more than one mail type
+
+  let domainCounter = 0;
+  for (let i = 0; i < domains.length; i++) {
+    if (document.querySelector("#email").value.includes(domains[i])) {
+      domainCounter++;
+    }
+  }
+
+  if (domainCounter > 1) {
     document.querySelector(".form-notification").innerHTML =
-      "Please enter a valid email address. It cannot contain both Gmail and Yahoo domains.";
+      "Please enter a valid email address. It cannot contain 2 or more mail domains.";
     return; // Exit the function if the email contains both Gmail and Yahoo
   }
+
+  // if (
+  //   document.querySelector("#email").value.includes("@gmail.com") &&
+  //   document.querySelector("#email").value.includes("@yahoo.com") &&
+  //   document.querySelector("#email").value.includes("@hotmail.com") &&
+  //   document.querySelector("#email").value.includes("@outlook.com") &&
+  //   document.querySelector("#email").value.includes("@aol.com") &&
+  //   document.querySelector("#email").value.includes("@icloud.com") &&
+  //   document.querySelector("#email").value.includes("@protonmail.com") &&
+  //   document.querySelector("#email").value.includes("@mail.com") &&
+  //   document.querySelector("#email").value.includes("@yandex.com") &&
+  //   document.querySelector("#email").value.includes("@livemail.com") &&
+  //   document.querySelector("#email").value.includes("@msn.com") &&
+  //   document.querySelector("#email").value.includes("@zoho.com") &&
+  //   document.querySelector("#email").value.includes("@gmx.com") &&
+  //   document.querySelector("#email").value.includes("@fastmail.com")
+  // ) {
+  //   document.querySelector(".form-notification").innerHTML =
+  //     "Please enter a valid email address. It cannot contain 2 or more mail domains.";
+  //   return; // Exit the function if the email contains both Gmail and Yahoo
+  // }
 
   (function () {
     emailjs.init("K2PSUkRlxwE8wR98m"); // Replace with your actual user ID
