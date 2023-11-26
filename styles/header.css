@@ -104,7 +104,7 @@ header form button ion-icon {
 .form-notification {
   color: #fff;
   position: fixed;
-  top: 10px;
+  top: 0;
   left: 0;
   width: 100%;
   text-align: center;
