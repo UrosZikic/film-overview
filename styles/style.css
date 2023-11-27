@@ -133,6 +133,11 @@ img {
 .invisible-three {
   display: none;
 }
+.poster-path,
+.backdrop-path {
+  width: 100%;
+  max-width: 375px;
+}
 
 .poster-path {
   height: 234px !important;
@@ -140,6 +145,7 @@ img {
 }
 .backdrop-path {
   height: 234px;
+
   object-fit: cover;
 }
 /* iframe styles */
@@ -187,7 +193,7 @@ footer a {
 @media only screen and (min-width: 901px) {
   .backdrop-path,
   .poster-path {
-    /* max-width: 375px; */
+    max-width: 375px !important;
     object-fit: cover;
   }
 }
