@@ -41,6 +41,5 @@ Parts completed:
 9. information modal for every movie (opens by clicking the specific movie container and is fully dynamic)
 10. Implemented pagination
 11. Switch between Movies and TV shows
-12. Contact Form for flients
+12. Contact Form for clients
 
-In progress:
