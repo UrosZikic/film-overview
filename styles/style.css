@@ -41,6 +41,8 @@ main {
 .image-container {
   position: relative;
   display: grid;
+  width: 100%;
+  max-width: 375px;
 }
 .image-container:hover img {
   filter: blur(4px) brightness(50%);
