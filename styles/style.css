@@ -42,7 +42,7 @@ main {
   position: relative;
   display: grid;
   width: 100%;
-  max-width: 375px;
+  max-width: 500px;
 }
 .image-container:hover img {
   filter: blur(4px) brightness(50%);
