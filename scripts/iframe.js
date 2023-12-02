@@ -2,31 +2,31 @@ const trailers = {
   results: [
     {
       name: "Mission: Impossible",
-      src: "https://www.youtube-nocookie.com/embed/avz06PDqDbM?si=64yVRK7mlOWnhitg&autoplay=0&rel=0",
+      src: "https://www.youtube-nocookie.com/embed/avz06PDqDbM?si=64yVRK7mlOWnhitg&autoplay=0modestbranding=1&rel=0",
       image: "images/missionimpossible.webp",
       color: "#ced4da",
     },
     {
       name: "Five Nights at Freddy's",
-      src: "https://www.youtube-nocookie.com/embed/0VH9WCFV6XQ?si=2xCW0-jS1vqMDjUk&autoplay=0&rel=0",
+      src: "https://www.youtube-nocookie.com/embed/0VH9WCFV6XQ?si=2xCW0-jS1vqMDjUk&autoplay=0modestbranding=1&rel=0",
       image: "images/fivenightsatfreddy.webp",
       color: "#ffe066",
     },
     {
       name: "Expendables",
-      src: "https://www.youtube-nocookie.com/embed/DhlaBO-SwVE?si=9xb5KjIb_mYPBjVS&autoplay=0&rel=0",
+      src: "https://www.youtube-nocookie.com/embed/DhlaBO-SwVE?si=9xb5KjIb_mYPBjVS&autoplay=0modestbranding=1&rel=0",
       image: "images/expendables.webp",
       color: "#38d9a9",
     },
     {
       name: "Blue Beetle",
-      src: "https://www.youtube-nocookie.com/embed/4wxyy8Rcz4k?si=E1zCOjpzu-SD9dmK&autoplay=0&rel=0",
+      src: "https://www.youtube-nocookie.com/embed/4wxyy8Rcz4k?si=E1zCOjpzu-SD9dmK&autoplay=0modestbranding=1&rel=0",
       image: "images/bluebeetle.webp",
       color: "#5c7cfa",
     },
     {
       name: "Oppenheimer",
-      src: "https://www.youtube-nocookie.com/embed/uYPbbksJxIg?si=TlGomCgREf_d7XED&autoplay=0&rel=0",
+      src: "https://www.youtube-nocookie.com/embed/uYPbbksJxIg?si=TlGomCgREf_d7XED&autoplay=0modestbranding=1&rel=0",
       image: "images/oppenheimer.webp",
       color: "#e67700",
     },
@@ -34,31 +34,31 @@ const trailers = {
   resultsTV: [
     {
       name: "Marvel's Daredevil",
-      src: "https://www.youtube.com/embed/jAy6NJ_D5vU?si=enhH0gl83IUywYr2",
+      src: "https://www.youtube.com/embed/jAy6NJ_D5vU?si=enhH0gl83IUywYr2&modestbranding=1",
       image: "images/dd.webp",
       color: "#c92a2a",
     },
     {
       name: "Cobra Kai",
-      src: "https://www.youtube.com/embed/lkaIYfA1WOs?si=wEcIbom9CJZ1Ylmd",
+      src: "https://www.youtube.com/embed/lkaIYfA1WOs?si=wEcIbom9CJZ1Ylmd&modestbranding=1",
       image: "images/kobra.webp",
       color: "#c92a2a",
     },
     {
       name: "Adventure Time",
-      src: "https://www.youtube.com/embed/DRaLQ3kKz_k?si=L93Wjq99Tp5XguwF",
+      src: "https://www.youtube.com/embed/DRaLQ3kKz_k?si=L93Wjq99Tp5XguwF&modestbranding=1",
       image: "images/at.webp",
       color: "#38d9a9",
     },
     {
       name: "Last Kingdom",
-      src: "https://www.youtube.com/embed/eqCYw_o5lng?si=RymCD0E3MhHMkIDD",
+      src: "https://www.youtube.com/embed/eqCYw_o5lng?si=RymCD0E3MhHMkIDD&modestbranding=1",
       image: "images/lk.webp",
       color: "#ced4da",
     },
     {
       name: "Rick and Morty",
-      src: "https://www.youtube.com/embed/BKYJ5AIOU9I?si=GBIKWYhrjrCwx_VM",
+      src: "https://www.youtube.com/embed/BKYJ5AIOU9I?si=GBIKWYhrjrCwx_VM&modestbranding=1",
       image: "images/rm.webp",
       color: "#15aabf",
     },
