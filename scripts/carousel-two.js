@@ -6,7 +6,7 @@ document.querySelector(".exit-modal-two").onclick = () => {
     container.style.filter = "blur(0px)";
   });
   document.querySelector(".result-title").style.filter = "blur(0px)";
-  document.querySelector(".youtube-container").style.filter = "blur(0px)";
+  // document.querySelector(".youtube-container").style.filter = "blur(0px)";
 };
 
 async function featureCarouselTwo(url, container) {
@@ -101,8 +101,8 @@ async function featureCarouselTwo(url, container) {
                 });
               document.querySelector(".result-title").style.filter =
                 "blur(4px)";
-              document.querySelector(".youtube-container").style.filter =
-                "blur(4px)";
+              // document.querySelector(".youtube-container").style.filter =
+              //   "blur(4px)";
 
               if (infoModal2.classList.contains("invisible-two")) {
                 infoModal2.classList.remove("invisible-two");
@@ -212,7 +212,7 @@ document.body.onclick = () => {
       container.style.filter = "blur(0px)";
     });
     document.querySelector(".result-title").style.filter = "blur(0px)";
-    document.querySelector(".youtube-container").style.filter = "blur(0px)";
+    // document.querySelector(".youtube-container").style.filter = "blur(0px)";
   }
 };
 

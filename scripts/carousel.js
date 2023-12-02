@@ -6,7 +6,7 @@ document.querySelector(".exit-modal-three").onclick = () => {
     container.style.filter = "blur(0px)";
   });
   document.querySelector(".result-title").style.filter = "blur(0px)";
-  document.querySelector(".youtube-container").style.filter = "blur(0px)";
+  // document.querySelector(".youtube-container").style.filter = "blur(0px)";
 };
 // carousel
 var carouselContainer = document.querySelector(".carousel-container");
@@ -90,8 +90,8 @@ async function featureCarousel(url, container) {
                 container.style.filter = "blur(0px)";
               });
             document.querySelector(".result-title").style.filter = "blur(0px)";
-            document.querySelector(".youtube-container").style.filter =
-              "blur(0px)";
+            // document.querySelector(".youtube-container").style.filter =
+            //   "blur(0px)";
             document
               .querySelector(".overlay-body")
               .classList.add("overlay-disappear");
@@ -132,8 +132,8 @@ async function featureCarousel(url, container) {
                 });
               document.querySelector(".result-title").style.filter =
                 "blur(4px)";
-              document.querySelector(".youtube-container").style.filter =
-                "blur(4px)";
+              // document.querySelector(".youtube-container").style.filter =
+              //   "blur(4px)";
 
               if (infoModal3.classList.contains("invisible-three")) {
                 infoModal3.classList.remove("invisible-three");

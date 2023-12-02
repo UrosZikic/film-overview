@@ -52,7 +52,7 @@ document.querySelector(".exit-modal").onclick = () => {
     container.style.filter = "blur(0px)";
   });
   document.querySelector(".result-title").style.filter = "blur(0px)";
-  document.querySelector(".youtube-container").style.filter = "blur(0px)";
+  // document.querySelector(".youtube-container").style.filter = "blur(0px)";
 };
 
 // 0. Initial random call
@@ -76,7 +76,7 @@ callTvDefault.addEventListener("click", () => {
     callTvDefault.innerHTML = "Series";
   }
   pagination = [];
-  iFrameSet(true);
+  // iFrameSet(true);
   fetchMovies(currentApiUrl, "movie-id");
   toggleUp();
 });
@@ -253,8 +253,8 @@ async function fetchMovies(url, el) {
                 container.style.filter = "blur(0px)";
               });
             document.querySelector(".result-title").style.filter = "blur(0px)";
-            document.querySelector(".youtube-container").style.filter =
-              "blur(0px)";
+            // document.querySelector(".youtube-container").style.filter =
+            //   "blur(0px)";
             document
               .querySelector(".overlay-body")
               .classList.add("overlay-disappear");
@@ -303,8 +303,8 @@ async function fetchMovies(url, el) {
                 });
               document.querySelector(".result-title").style.filter =
                 "blur(4px)";
-              document.querySelector(".youtube-container").style.filter =
-                "blur(4px)";
+              // document.querySelector(".youtube-container").style.filter =
+              //   "blur(4px)";
               // removes the invisibility style from the element while it's open
               if (infoModal.classList.contains("invisible")) {
                 infoModal.classList.remove("invisible");
