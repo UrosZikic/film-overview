@@ -147,9 +147,10 @@ async function featureCarouselTwo(url, container) {
           lazyLoad: "ondemand",
           dots: false,
           infinite: true,
+          swipe: false,
           speed: 500,
           slidesToShow: 5,
-          slidesToScroll: 6,
+          slidesToScroll: 1,
           prevArrow:
             '<button class="slick-prev" aria-label="scroll left"><ion-icon name="chevron-back-outline"></ion-icon></button>',
           nextArrow:
@@ -159,16 +160,20 @@ async function featureCarouselTwo(url, container) {
               breakpoint: 1024,
               settings: {
                 slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToScroll: 1,
                 infinite: true,
                 dots: false,
+                swipe: true,
               },
             },
             {
               breakpoint: 600,
               settings: {
                 slidesToShow: 2,
-                slidesToScroll: 2,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: false,
+                swipe: true,
               },
             },
             {
@@ -176,6 +181,9 @@ async function featureCarouselTwo(url, container) {
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1,
+                infinite: true,
+                dots: false,
+                swipe: true,
               },
             },
           ],
