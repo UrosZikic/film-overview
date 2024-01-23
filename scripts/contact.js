@@ -114,7 +114,7 @@ function sendMail() {
     email: document.querySelector("#email").value,
   };
   const serviceID = "service_sxnbe4j";
-  const templateID = "template_0muz62m";
+  const templateID = "template_918g5xh";
 
   emailjs
     .send(serviceID, templateID, params)
